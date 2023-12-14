@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center mt-3">
+    @if (event!==null) {
+    <div class="card w-100 w-md-75">
+      <div class="col d-flex justify-content-center h-vh mt-3">
+        <img
+          src="{{ event.id_game.thumbnail_url }}"
+          class="img-fluid"
+          alt="image game"
+        />
+      </div>
+      <div class="card-body text-center">
+        <h1 class="card-title">{{ event.name }}</h1>
+        <p class="card-text">
+          {{ event.description }}
+        </p>
+        <p class="card-text">Game: {{ event.id_game.title }}</p>
+        <div class="row">
+          <div class="col">
+            <p class="fs-6">Stard date: {{ event.start }}</p>
+          </div>
+          <div class="col">
+            <p class="fs-6">End date: {{ event.end }}</p>
+          </div>
+        </div>
+        @if (isUserEventManager()) {
+        <div class="row d-flex justify-content-center align-items-center">
+          <a
+            [routerLink]="['/event/edit', event.id]"
+            class="btn btn-warning w-25"
+          >
+            Editar
+          </a>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

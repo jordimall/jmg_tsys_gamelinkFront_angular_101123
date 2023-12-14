@@ -10,7 +10,11 @@ const baseURL = 'http://localhost:3000/event';
 export class EventService {
   constructor(private http: HttpClient) {}
 
-  allEventPaginate = (numPage: number): Observable<Event> => {
-    return this.http.get(`${baseURL}?_page=${numPage}&_limit=20`);
+  allEventPaginate = (numPage: number): Observable<Event[]> => {
+    return this.http.get<Event[]>(`${baseURL}?_page=${numPage}&_limit=20`);
+  };
+
+  getEvent = (id: number): Observable<Event> => {
+    return this.http.get(`${baseURL}/${id}`);
   };
 }
