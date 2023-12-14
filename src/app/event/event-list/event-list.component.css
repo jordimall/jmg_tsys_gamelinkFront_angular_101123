@@ -1,0 +1,43 @@
+.style-none {
+  text-decoration: none;
+}
+
+.thumbnail {
+  position: relative;
+  text-shadow: 1px 1px 0 #000;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.thumbnail-card {
+  display: block;
+  height: 15.5rem;
+  text-decoration: none;
+}
+
+.thumbnail-title {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 5px;
+  border: 2px solid transparent;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.thumbnail-footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 5px;
+  border: 2px solid transparent;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
