@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list/event-list.component';
+import { LoginComponent } from './login/login.component';
 import { EventShowComponent } from './event/event-show/event-show.component';
-
 export const routes: Routes = [
   {
     path: 'event',
@@ -12,4 +12,8 @@ export const routes: Routes = [
       { path: 'show/:id', component: EventShowComponent },
     ],
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
