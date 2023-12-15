@@ -1,0 +1,89 @@
+<div
+  class="row d-flex flex-column justify-content-center align-items-center h-75vh"
+>
+  <div class="col-6 text-center">
+    <h1>Create a new event</h1>
+  </div>
+  <div class="col-6 border border-dark-subtle bg-white mt-2">
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name" />
+        @if (eventForm.get('name')?.hasError('required')&&
+        eventForm.get('name')?.touched) {
+        <span class="text-danger">Enter the name of the event</span>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          formControlName="description"
+        ></textarea>
+        <div class="d-flex justify-content-between">
+          <span class="text-danger">
+            @if (eventForm.get('description')?.hasError('required')&&
+            eventForm.get('description')?.touched) { Write a description for the
+            event }@else if
+            (eventForm.get('description')?.hasError('maxlength')) { You have
+            reached the writing limit }
+          </span>
+          <span class="fs-6 fw-light">
+            @if (eventForm.value.description) {
+            {{ eventForm.value.description.length }}
+            } @else {0} / {{ limitLength }}
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 d-flex justify-content-evenly">
+        <div>
+          <label for="" class="form-label">Start date</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="start"
+            min="{{ minDate }}"
+          />
+          @if (eventForm.get('start')?.hasError('required') &&
+          eventForm.get('start')?.touched) {
+          <span class="text-danger"> you must select a date </span>
+          }
+        </div>
+        <div>
+          <label for="" class="form-label">End date</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="end"
+            [min]="eventForm.value.start"
+          />
+          @if (eventForm.get('end')?.hasError('required') &&
+          eventForm.get('end')?.touched) {
+          <span class="text-danger"> you must select a date </span>
+          }
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Game</label>
+        <select class="form-select" formControlName="id_game">
+          <option [value]="''" [selected]="true">Select a game</option>
+          @for (game of listGame; track $index) {
+          <option [value]="game">{{ game.title }}</option>
+          }
+        </select>
+        @if (eventForm.get('id_game')?.hasError('required') &&
+        eventForm.get('id_game')?.touched) {
+        <span class="text-danger"> You have to select a game </span>
+        }
+      </div>
+      <button
+        [disabled]="!eventForm.valid"
+        type="submit"
+        class="btn btn-primary mb-2"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+</div>
