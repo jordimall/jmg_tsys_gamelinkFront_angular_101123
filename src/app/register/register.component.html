@@ -1,0 +1,58 @@
+<div class="container h-100 ">
+    <div class="row align-items-center h-100">
+        <div class="w-100 align-items-center d-flex justify-content-center align-items-center">
+            <div class="w-50">
+                <div class="card rounded-5 text-white bg-dark">
+                    <div class="card-body py-5 px-md-5">
+                        <form>
+                        <div class="mb-3">
+                            <label class="mb-1" for="exampleInputEmail1">Email</label>
+                            <input
+                            type="email"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="User@example.com"
+                            [(ngModel)]="email" name="email" 
+                            />
+                            <div class="row">
+                                <div id="errorEmail" class="col-md-4 error hidden">Enter a valid email</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="mb-1" for="exampleInputPassword1">Password</label>
+                            <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="Password"
+                            [(ngModel)]="password" name="password" 
+                            />
+                            <div class="row">
+                                <div id="errorPassword" class="col-md-4 error hidden">Enter a password</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="mb-1" for="exampleInputUsername">Username</label>
+                            <input
+                            type="username"
+                            class="form-control"
+                            id="exampleInputUsername"
+                            placeholder="Username"
+                            [(ngModel)]="name" name="name" 
+                            />
+                            <div class="row">
+                                <div id="errorName" class="col-md-4 error hidden">Enter a username</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary rounded-pill btn-color w-100" type="button" (click)="register()">Register</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
