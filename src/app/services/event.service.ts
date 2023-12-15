@@ -15,6 +15,14 @@ export class EventService {
   };
 
   getEvent = (id: number): Observable<Event> => {
-    return this.http.get(`${baseURL}/${id}`);
+    return this.http.get<Event>(`${baseURL}/${id}`);
+  };
+
+  addEvent = (data: Event): Observable<any> => {
+    return this.http.post(baseURL, data);
+  };
+
+  editEvent = (id: number, data: Event): Observable<any> => {
+    return this.http.put(`${baseURL}/${id}`, data);
   };
 }

@@ -7,6 +7,6 @@ export class Event {
   status?: string;
   start?: string;
   end?: string;
-  idGame?: Game;
+  id_game?: Game;
   idUser?: number;
 }
