@@ -4,7 +4,7 @@
   <div class="col-6 text-center">
     <h1>Create a new event</h1>
   </div>
-  <div class="col-6 border border-dark-subtle bg-white mt-2">
+  <div class="col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2">
     <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label for="" class="form-label">Name</label>
@@ -20,6 +20,7 @@
           type="text"
           class="form-control"
           formControlName="description"
+          [maxLength]="limitLength"
         ></textarea>
         <div class="d-flex justify-content-between">
           <span class="text-danger">
@@ -36,7 +37,7 @@
           </span>
         </div>
       </div>
-      <div class="mb-3 d-flex justify-content-evenly">
+      <div class="mb-3 d-md-flex justify-content-md-evenly">
         <div>
           <label for="" class="form-label">Start date</label>
           <input
@@ -69,7 +70,7 @@
         <select class="form-select" formControlName="id_game">
           <option [value]="''" [selected]="true">Select a game</option>
           @for (game of listGame; track $index) {
-          <option [value]="game">{{ game.title }}</option>
+          <option [ngValue]="game">{{ game.title }}</option>
           }
         </select>
         @if (eventForm.get('id_game')?.hasError('required') &&
