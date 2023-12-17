@@ -25,11 +25,17 @@ import { GamerolesComponent } from './gameroles/gameroles.component';
 import { TagsComponent } from './tags/tags.component';
 import { GamesComponent } from './games/games.component';
 import { PartiesComponent } from './parties/parties.component';
+import { loggedInGuard } from './guards/logged-in.guard';
 
 export const routes: Routes = [
   {
+    path:'',
+    component: LoginComponent 
+  },
+  {
     path: 'event',
     component: EventComponent,
+    canActivate: [loggedInGuard],
     children: [
       { path: '', component: EventListComponent },
       { path: 'show/:id', component: EventShowComponent },
@@ -48,21 +54,26 @@ export const routes: Routes = [
   {
     path:'home',
     component: HomeComponent,
+    canActivate: [loggedInGuard]
   },
   { path:'parties/:idGame', 
-    component: ListPartyComponent
+    component: ListPartyComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path:'partyDetails/:idParty',
-    component: PartyDetailsComponent
+    component: PartyDetailsComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path:'createParty',
-    component: CreatePartyComponent
+    component: CreatePartyComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path:'myParties',
     component: PartiesComponent,
+    canActivate: [loggedInGuard],
     children: [
       {path:'', component: MyPartiesComponent},
       {path:'created', component: MyPartiesCreatedComponent},
@@ -71,15 +82,18 @@ export const routes: Routes = [
   },
   {
     path:'userProfile/:idUser',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path:'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [loggedInGuard]
   },
   { 
     path:'game',
     component: GamesComponent,
+    canActivate: [loggedInGuard],
     children:[
       { path:'', component: CreateEditGameComponent},
       { path:':idGame', component: GameComponent},
@@ -90,6 +104,7 @@ export const routes: Routes = [
   {
     path:'tags',
     component: TagsComponent,
+    canActivate: [loggedInGuard],
     children:[
       { path:'', component: TagComponent},
       { path:'create', component: CreateEditTagComponent},
@@ -99,11 +114,11 @@ export const routes: Routes = [
   {
     path:'gameRoles',
     component: GamerolesComponent,
+    canActivate: [loggedInGuard],
     children:[
       { path:'', component: GameRoleComponent},
       { path:'create', component: CreateEditGameRoleComponent},
       { path:'edit/:idTag', component: CreateEditGameRoleComponent}
     ],
   }
-
 ];

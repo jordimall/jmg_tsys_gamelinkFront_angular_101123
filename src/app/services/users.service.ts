@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) {
-    this.checkRole();
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 
-  }
-
-  checkRole(){
-    this.http.get("https://ajo-tsys-gamelink-spring-1011-production.up.railway.app/user/1");
+  loggedIn(){
+    return (this.tokenStorage.getToken())
   }
 }
