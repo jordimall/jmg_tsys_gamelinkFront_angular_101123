@@ -82,11 +82,10 @@ export const routes: Routes = [
   {
     path: 'game',
     component: GamesComponent,
-    children: [
-      { path: '', component: CreateEditGameComponent },
-      { path: ':idGame', component: GameComponent },
-      { path: 'create', component: CreateEditGameComponent },
-      { path: 'edit/:idGame', component: CreateEditGameComponent },
+    children:[
+      { path:':idGame', component: GameComponent},
+      { path:'create', component: CreateEditGameComponent},
+      { path:'edit/:idGame', component: CreateEditGameComponent}
     ],
   },
   {

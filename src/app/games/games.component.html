@@ -1,2 +1,14 @@
 <app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="row d-flex games-row">
+        @for (game of games; track $index) {
+                <a class="game_card" routerLink="/parties/{{game.id}}">
+                    <img src="{{game.thumbnail_url}}" alt="" class="thumbnail_image">
+                    <p class="thumbnail_game_title">{{game.title}}</p>
+                </a>
+        } @empty {
+                
+        }
+    </div>
+</div>
 <router-outlet></router-outlet>
