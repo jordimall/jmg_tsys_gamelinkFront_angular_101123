@@ -104,7 +104,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: GameRoleComponent },
       { path: 'create', component: CreateEditGameRoleComponent },
-      { path: 'edit/:idTag', component: CreateEditGameRoleComponent },
+      { path: 'edit/:idGameRole', component: CreateEditGameRoleComponent },
     ],
   },
   {
