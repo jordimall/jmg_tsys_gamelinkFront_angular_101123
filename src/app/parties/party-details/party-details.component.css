@@ -1,0 +1,30 @@
+#list_parties_main_container {
+    padding-top: 60px;
+}
+
+.list_parties_game_image {
+    margin-top: 50px;
+    max-height: 400px;
+}
+
+.parties_list {
+    height: 600px;
+    margin-left: 40px;
+    background-color: rgb(158, 158, 158);
+}
+
+
+
+.parties_list_item p {
+    margin: 0;
+}
+
+.back_icon {
+    height: 30px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+.back_icon:hover {
+    cursor: pointer;
+}
