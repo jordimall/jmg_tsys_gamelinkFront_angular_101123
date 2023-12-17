@@ -1,6 +1,6 @@
 @if (eventList !== null) {
-<div class="container">
-  <div class="row d-flex flex-column flex-md-row justify-content-center mt-2">
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center mt-2">
     <div class="col text-center"><h2>Events</h2></div>
     <div class="col">
       <form
@@ -19,33 +19,43 @@
   </div>
   <div class="row justify-content-center">
     @for (event of eventList; track $index) {
-
-    <div
-      class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mt-2 upload-file-row me-2"
-    >
+    <div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-2 mt-2 me-md-2">
       <a [routerLink]="['./show', event.id]" class="style-none">
         <div
           class="thumbnail thumbnail-card fix-bg-img"
           style="background-image: url({{event.id_game.thumbnail_url}});"
         >
           <div class="thumbnail-title">
-            <h4 class="text-truncate text-center fs-">{{ event.name }}</h4>
+            <h4 class="text-truncate text-center fs-95rem">{{ event.name }}</h4>
           </div>
           <div class="thumbnail-footer">
             <div class="row text-center g-0">
               <div class="col">
-                <p class="fs-6">Stard date: {{ event.start }}</p>
+                <p class="fs-75rem">Stard date:</p>
+                <p class="fs-75rem">{{ event.start }}</p>
               </div>
               <div class="col">
-                <p class="fs-6">End date: {{ event.end }}</p>
+                <p class="fs-75rem">End date:</p>
+                <p class="fs-75rem">{{ event.end }}</p>
               </div>
             </div>
           </div>
         </div>
       </a>
     </div>
-
     }
   </div>
+  @if (isUserEventManager()) {
+  <div class="row-6 fixed-bottom d-flex justify-content-end">
+    <div class="col-1 text-center">
+      <button
+        [routerLink]="['./new']"
+        class="btn btn-success mb-5 rounded-circle"
+      >
+        +
+      </button>
+    </div>
+  </div>
+  }
 </div>
 } @else { Procesando la solicitud }

@@ -21,7 +21,7 @@ export class NavBarComponent {
     return true;
   };
 
-  public logout(): void{
+  public logout = (): void => {
     this.token.signOut();
-  }
+  };
 }

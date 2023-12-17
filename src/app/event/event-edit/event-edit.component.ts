@@ -11,6 +11,8 @@ import { Event } from '../../models/event.model';
 import { Game } from '../../models/game.model';
 import { EventService } from '../../services/event.service';
 import { GameService } from '../../services/game.service';
+
+
 @Component({
   selector: 'app-event-edit',
   standalone: true,
@@ -21,7 +23,7 @@ import { GameService } from '../../services/game.service';
 export class EventEditComponent implements OnInit {
   id: any;
   event: Event = {};
-  listGame: Game[] | any;
+  listGame: Game[] =[];
   date: Date = new Date();
   minDate: string = `${this.date.getFullYear()}-${
     this.date.getMonth() + 1
@@ -76,13 +78,14 @@ export class EventEditComponent implements OnInit {
   private getEvent = (id: number): void => {
     this.eventService.getEvent(id).subscribe(
       (data) => {
-        this.eventForm.setValue({
+        const selectedGame = this.listGame.find(game => game.id === data.id_game?.id);
+        this.eventForm.patchValue({
           name: data.name,
           description: data.description,
           status: data.status,
           start: data.start,
           end: data.end,
-          id_game: data.id_game,
+          id_game: selectedGame
         });
       },
       (err) => {

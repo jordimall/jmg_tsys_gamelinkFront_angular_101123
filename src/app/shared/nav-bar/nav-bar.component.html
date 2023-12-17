@@ -3,7 +3,7 @@
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/games">GL</a>
+    <a class="navbar-brand" [routerLink]="['/home']">GL</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="#"
+            [routerLink]="['/games']"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
           >
@@ -30,7 +30,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="#"
+            [routerLink]="['/myParties']"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
           >
@@ -40,7 +40,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="#"
+            [routerLink]="['/event']"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
           >
@@ -48,29 +48,39 @@
           </a>
         </li>
         @if (isUserAdmin()) {
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="#"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-            >
-              Tags
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="#"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-            >
-              Game Role
-            </a>
-          </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/users']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Users
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/tags']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Tags
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/gameRoles']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Game Role
+          </a>
+        </li>
         }
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-5">
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -84,11 +94,13 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" routerLink="#"> Edit Profile </a>
+              <a class="dropdown-item" [routerLink]="['/userProfile/:idUser']">
+                Profile
+              </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <a class="dropdown-item" (click)="logout()" routerLink="/login"> LogOut </a>
+              <button class="dropdown-item" (click)="logout()" routerLink="/login"> LogOut </button>
             </li>
           </ul>
         </li>
