@@ -25,6 +25,7 @@ import { CreateEditTagComponent } from './tags/create-edit-tag/create-edit-tag.c
 import { GamerolesComponent } from './gameroles/gameroles.component';
 import { GameRoleComponent } from './gameroles/game-role/game-role.component';
 import { CreateEditGameRoleComponent } from './gameroles/create-edit-game-role/create-edit-game-role.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -41,7 +42,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    component: GamesComponent,
   },
   {
     path: 'event',
@@ -80,7 +81,7 @@ export const routes: Routes = [
     component: UsersComponent,
   },
   {
-    path: 'game',
+    path: 'games',
     component: GamesComponent,
     children:[
       { path:':idGame', component: GameComponent},
@@ -106,4 +107,8 @@ export const routes: Routes = [
       { path: 'edit/:idTag', component: CreateEditGameRoleComponent },
     ],
   },
+  {
+    path: '404',
+    component: NotFoundComponent
+  }
 ];
