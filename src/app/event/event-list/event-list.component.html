@@ -45,15 +45,17 @@
     </div>
     }
   </div>
+  @if (isUserEventManager()) {
   <div class="row-6 fixed-bottom d-flex justify-content-end">
     <div class="col-1 text-center">
       <button
         [routerLink]="['./new']"
-        class="btn btn-success mb-5 rounded-circle btn-max"
+        class="btn btn-success mb-5 rounded-circle"
       >
         +
       </button>
     </div>
   </div>
+  }
 </div>
 } @else { Procesando la solicitud }
