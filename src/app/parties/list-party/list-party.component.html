@@ -1,1 +1,18 @@
-<p>list-party works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container" id="list_parties_main_container">
+    <div class="row"><div class="col-1 offset-3"><img src="../../../assets/arrow-left.svg" alt="" class="back_icon" routerLink="/game"></div></div>
+    <div class="row">
+        <img src="{{game.thumbnail_url}}" alt="" class="col-3 list_parties_game_image">
+        <div class="container col-7 overflow-auto parties_list">
+            @for (party of parties; track $index) {
+                <a class="parties_list_item row d-flex justify-content-between" routerLink="/partyDetails/{{party.id}}">
+                    <p class="col-6">{{party.name}}</p>
+                    <p class="col-1">0/{{party.max_players}}</p>
+                </a>
+            } @empty {
+                    
+            }
+        </div>
+        <button class="col-2 offset-6 mt-4" routerLink="/createParty">Create Party</button>
+    </div>
+</div>
