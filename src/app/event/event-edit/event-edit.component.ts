@@ -16,7 +16,7 @@ import { GameService } from '../../services/game.service';
 @Component({
   selector: 'app-event-edit',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule,],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './event-edit.component.html',
   styleUrl: './event-edit.component.css',
 })

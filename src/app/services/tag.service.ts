@@ -30,6 +30,6 @@ export class TagService {
   };
 
   deleteTag = (id: number): Observable<any> => {
-    return this.http.delete(baseURLMock);
+    return this.http.delete(`${baseURLMock}/${id}`);
   };
 }

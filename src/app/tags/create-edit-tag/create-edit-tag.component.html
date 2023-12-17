@@ -1,1 +1,46 @@
-<p>create-edit-tag works!</p>
+<div class="container-fluid">
+  <div
+    class="row d-flex flex-column justify-content-center align-items-center h-75vh"
+  >
+    <div class="col-6 text-center">
+      <h1>
+        @if (findOutId()) {Edit to {{ tagForm.value.name }}} @else {Create tag}
+      </h1>
+    </div>
+    <div
+      class="col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2"
+    >
+      <form [formGroup]="tagForm" (ngSubmit)="findOut()">
+        <div class="mb-3">
+          <label for="" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+          @if (tagForm.get('name')?.hasError('required')&&
+          tagForm.get('name')?.touched) {
+          <span class="text-danger">Enter the name of the tag</span>
+          }
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Description</label>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="description"
+          ></textarea>
+          <div class="d-flex justify-content-between">
+            @if (tagForm.get('description')?.hasError('required')&&
+            tagForm.get('description')?.touched) {
+            <span class="text-danger"> Write a description for the tag </span>
+            }
+          </div>
+        </div>
+        <button
+          [disabled]="!tagForm.valid"
+          type="submit"
+          class="btn btn-primary mb-2"
+        >
+          @if (findOutId()) { Edit } @else { Create }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
