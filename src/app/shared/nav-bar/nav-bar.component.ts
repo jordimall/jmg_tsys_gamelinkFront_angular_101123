@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +10,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
-  constructor() {}
+  constructor(private token:TokenStorageService) {}
   public isUserAdmin = (): boolean => {
     // Consulta al servicio de autenticación
     return true;
@@ -20,5 +21,7 @@ export class NavBarComponent {
     return true;
   };
 
-  public LougtOut = (): void => {};
+  public logout = (): void => {
+    this.token.signOut();
+  };
 }

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,24 +12,24 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent {
 
-  name: string = "";
+  userName: string = "";
   email: string = "";
   password: string = "";
 
   readonly regex_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private authService:AuthService){}
 
   validateRegister(): boolean {
-    var nameError: HTMLElement | null = document.getElementById("errorName");
+    var userName: HTMLElement | null = document.getElementById("errorName");
     var emailError: HTMLElement | null = document.getElementById("errorEmail");
     var passwordError: HTMLElement | null = document.getElementById("errorPassword");
 
-    this.checkEmpty(this.name, nameError);
+    this.checkEmpty(this.userName, userName);
     this.checkEmpty(this.email, emailError);
     this.checkEmpty(this.password, passwordError);
 
-    if (!nameError?.classList.contains("hidden") ||
+    if (!userName?.classList.contains("hidden") ||
         !emailError?.classList.contains("hidden")||
         !passwordError?.classList.contains("hidden")) {
         return false;
@@ -53,7 +54,15 @@ export class RegisterComponent {
   
   register(){
     if(this.validateRegister()){
-      this.router.navigateByUrl('/login');
+      this.authService.register(this.userName, this.email, this.password).subscribe(
+        data=> {
+          console.log(data);
+          this.router.navigateByUrl('/login');
+        },
+        err => {
+          console.log(err.error.message);
+        }
+      )
     }
   }
 }

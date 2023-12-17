@@ -26,7 +26,7 @@ import { GamerolesComponent } from './gameroles/gameroles.component';
 import { GameRoleComponent } from './gameroles/game-role/game-role.component';
 import { CreateEditGameRoleComponent } from './gameroles/create-edit-game-role/create-edit-game-role.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { loggedInGuard } from './guards/logged-in.guard';
 export const routes: Routes = [
   {
     path: '',
@@ -43,10 +43,12 @@ export const routes: Routes = [
   {
     path: 'home',
     component: GamesComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path: 'event',
     component: EventComponent,
+    canActivate: [loggedInGuard],
     children: [
       { path: '', component: EventListComponent },
       { path: 'show/:id', component: EventShowComponent },
@@ -54,18 +56,25 @@ export const routes: Routes = [
       { path: 'edit/:id', component: EventEditComponent },
     ],
   },
-  { path: 'parties/:idGame', component: ListPartyComponent },
+  { 
+    path: 'parties/:idGame', 
+    component: ListPartyComponent,
+    canActivate: [loggedInGuard] 
+  },
   {
     path: 'partyDetails/:idParty',
     component: PartyDetailsComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path: 'createParty',
     component: CreatePartyComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path: 'myParties',
     component: PartiesComponent,
+    canActivate: [loggedInGuard],
     children: [
       { path: '', component: MyPartiesComponent },
       { path: 'created', component: MyPartiesCreatedComponent },
@@ -75,14 +84,17 @@ export const routes: Routes = [
   {
     path: 'userProfile/:idUser',
     component: UserProfileComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [loggedInGuard]
   },
   {
     path: 'games',
     component: GamesComponent,
+    canActivate: [loggedInGuard],
     children:[
       { path:':idGame', component: GameComponent},
       { path:'create', component: CreateEditGameComponent},
@@ -92,6 +104,7 @@ export const routes: Routes = [
   {
     path: 'tags',
     component: TagsComponent,
+    canActivate: [loggedInGuard],
     children: [
       { path: '', component: TagComponent },
       { path: 'create', component: CreateEditTagComponent },
@@ -101,10 +114,11 @@ export const routes: Routes = [
   {
     path: 'gameRoles',
     component: GamerolesComponent,
+    canActivate: [loggedInGuard],
     children: [
       { path: '', component: GameRoleComponent },
       { path: 'create', component: CreateEditGameRoleComponent },
-      { path: 'edit/:idGameRole', component: CreateEditGameRoleComponent },
+      { path: 'edit/:idGameRole', component: CreateEditGameRoleComponent }
     ],
   },
   {
