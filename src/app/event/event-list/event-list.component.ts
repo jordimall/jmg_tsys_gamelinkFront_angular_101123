@@ -25,4 +25,9 @@ export class EventListComponent implements OnInit {
       }
     );
   }
+
+  public isUserEventManager = (): boolean => {
+    // Consulta al servicio de autenticación
+    return true;
+  };
 }

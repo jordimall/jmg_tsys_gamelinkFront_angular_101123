@@ -19,4 +19,6 @@ export class NavBarComponent {
     // Consulta al servicio de autenticación
     return true;
   };
+
+  public LougtOut = (): void => {};
 }
