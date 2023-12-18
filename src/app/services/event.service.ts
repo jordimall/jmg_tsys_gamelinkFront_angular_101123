@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../models/event.model';
 
 const baseURL = 'https://ajo-tsys-gamelink-spring-1011-production.up.railway.app/event';
-const baseURLMock = 'http://localhost:3000/event';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,18 +11,18 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   allEventPaginate = (numPage: number): Observable<Event[]> => {
-    return this.http.get<Event[]>(`${baseURLMock}?_page=${numPage}&_limit=20`); // Se ha de modificar url
+    return this.http.get<any[]>(`${baseURL}/all?page=${numPage}`);
   };
 
   getEvent = (id: number): Observable<Event> => {
-    return this.http.get<Event>(`${baseURLMock}/${id}`);
+    return this.http.get<Event>(`${baseURL}/${id}`);
   };
 
   addEvent = (data: Event): Observable<any> => {
-    return this.http.post(baseURLMock, data);
+    return this.http.post(baseURL, data);
   };
 
   editEvent = (id: number, data: Event): Observable<any> => {
-    return this.http.put(`${baseURLMock}/${id}`, data);
+    return this.http.put(`${baseURL}/${id}`, data);
   };
 }

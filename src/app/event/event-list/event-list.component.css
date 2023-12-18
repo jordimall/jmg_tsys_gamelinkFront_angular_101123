@@ -2,11 +2,11 @@
   text-decoration: none;
 }
 
-.fs-95rem{
-  font-size: 0.90rem;
+.fs-95rem {
+  font-size: 0.9rem;
 }
 
-.fs-75rem{
+.fs-75rem {
   font-size: 0.85rem;
 }
 
@@ -48,4 +48,9 @@
   border: 2px solid transparent;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.img-bg {
+  background-size: cover;
+  background-position: center;
 }
