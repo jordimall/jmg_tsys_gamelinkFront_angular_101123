@@ -5,6 +5,8 @@ import { PartyService } from '../../services/party.service';
 import { Router, RouterLink } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
+import { UserPartyGameRole } from '../../models/user-party-game-role.model';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-party-details',
@@ -17,6 +19,7 @@ export class PartyDetailsComponent {
 
   party: Party = new Party;
   game: Game = new Game;
+  members: UserPartyGameRole[] | undefined = [];
 
   constructor(private partyService: PartyService, private gameService: GameService, private route: Router){
 
@@ -37,18 +40,21 @@ export class PartyDetailsComponent {
             this.route.navigateByUrl("/404");
           }
         );
+        this.partyService.getMembers(1).subscribe(
+          result => {
+            let tmpParty: Party = result;
+            this.members = tmpParty.userPartyGameRole;
+            console.log(tmpParty.userPartyGameRole);
+          },
+          error => {
+            console.log("err")
+          }
+        );
       },
       error => {
 
       }
     );
-    this.partyService.getMembers(1).subscribe(
-      result => {
-        console.log(result);
-      },
-      error => {
-        console.log("err")
-      }
-    );
+    
   }
 }

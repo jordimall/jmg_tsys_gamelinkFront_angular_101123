@@ -21,7 +21,7 @@ export class PartyService {
     return this.http.get<Party>(baseURL+'id/'+id);
   }
 
-  getMembers = (id: number): Observable<Object[]> => {
-    return this.http.get<Object[]>(baseURL+"members/roles/"+id);
+  getMembers = (id: number): Observable<Party> => {
+    return this.http.get<Party>(baseURL+"members/"+id);
   }
 }
