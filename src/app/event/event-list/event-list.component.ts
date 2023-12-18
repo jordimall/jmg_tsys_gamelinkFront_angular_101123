@@ -15,7 +15,7 @@ export class EventListComponent implements OnInit {
   eventList: Event | any;
   totalPage: number = 0;
   actualPage: number = 0;
-  size:number=0;
+  size: number = 0;
   first: boolean = false;
   last: boolean = false;
   constructor(private eventService: EventService) {}
@@ -23,7 +23,7 @@ export class EventListComponent implements OnInit {
   ngOnInit(): void {
     this.eventService.allEventPaginate(this.numPage).subscribe(
       (res: any) => {
-        console.log(res)
+        console.log(res);
         const { totalPages, content, number, first, last, size } = res;
         this.eventList = content;
         this.totalPage = totalPages;
