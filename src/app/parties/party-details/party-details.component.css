@@ -1,0 +1,88 @@
+#list_parties_main_container {
+    padding-top: 60px;
+}
+
+.list_parties_game_image {
+    margin-top: 50px;
+    max-height: 400px;
+}
+
+#party_details_frame {
+    height: 600px;
+    margin-left: 40px;
+    background-color: rgb(158, 158, 158);
+}
+
+.parties_list_item p {
+    margin: 0;
+}
+
+.back_icon {
+    height: 30px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+}
+
+.back_icon:hover {
+    cursor: pointer;
+}
+
+.party_details_header {
+    height: 50px;
+    color: white;
+    padding: 20px;
+}
+
+#party_details_player_list {
+    height: 370px;
+    align-content: start;
+    margin-top: 10px;
+}
+
+.party_details_player_list_item {
+    height: 70px;
+    background-color: gray;
+    padding-left: 30px;
+    border: 1px solid gray;
+    color: white;
+}
+
+.party_details_player_list_item p {
+    margin: 0;
+}
+
+.party_details_player_list_item:hover {
+    border: 1px solid white;
+}
+
+.role_icon {
+    max-width: 60px;
+    max-height: 40px;
+    margin-right: 25px;
+}
+
+.party_details_empty {
+    color: lightgray;
+}
+
+.party_details_player_list_item:has(.party_details_empty):hover {
+    border: 1px solid gray;
+}
+
+#party_details_footer {
+    margin-top: 20px;
+}
+
+#party_details_footer div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.party_details_option_role {
+    height: 300px;
+}
+
+#party_details_select_role {
+    width: 150px;
+}
