@@ -33,7 +33,8 @@ export class LoginComponent {
       console.log(this.userName, this.password)
       this.authService.login(this.userName, this.password).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.accessToken);
+          console.log(data)
+          this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.router.navigateByUrl('/home');
         },
@@ -63,7 +64,7 @@ export class LoginComponent {
   checkEmpty(field: string | undefined, errorField: HTMLElement | null): void{
     if(field === "") {
         errorField?.classList.remove("hidden");
-    } 
+    }
     else {
         errorField?.classList.add("hidden");
     }
