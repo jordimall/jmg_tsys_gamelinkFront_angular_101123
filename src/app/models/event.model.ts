@@ -1,5 +1,5 @@
 import { Game } from './game.model';
-
+import { User } from './user.model';
 export class Event {
   id?: number;
   name?: string;
@@ -8,5 +8,5 @@ export class Event {
   start?: string;
   end?: string;
   idGame?: Game;
-  idUser?: number;
+  idUser?: User;
 }

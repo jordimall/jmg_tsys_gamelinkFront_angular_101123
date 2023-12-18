@@ -5,7 +5,7 @@
       <div class="col d-flex justify-content-center h-vh mt-3">
         <link rel="preconnect" href="https://cdn2.unrealengine.com">
         <img
-          [src]="event.id_game.thumbnail_url"
+          [src]="event.idGame.thumbnailUrl"
           class="img-fluid img-"
           alt="image game"
         />
@@ -17,10 +17,10 @@
         </p>
         <div class="row mt-5">
           <div class="col">
-            <p class="card-text">Game: {{ event.id_game.title }}</p>
+            <p class="card-text">Game: {{ event.idGame.title }}</p>
           </div>
           <div class="col">
-            <p class="card-text">URL game: <a [href]="event.id_game.url">{{ event.id_game.title }}</a></p>
+            <p class="card-text">URL game: <a [href]="event.idGame.url">{{ event.idGame.title }}</a></p>
           </div>
         </div>
 
