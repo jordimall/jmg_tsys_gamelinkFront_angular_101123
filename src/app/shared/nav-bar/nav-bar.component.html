@@ -80,8 +80,8 @@
         </li>
         }
       </ul>
-      <ul class="navbar-nav me-5">
-        <li class="nav-item dropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
           <a
             class="nav-link dropdown-toggle"
             role="button"
@@ -92,7 +92,7 @@
           >
             {{ userName }}
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <a class="dropdown-item" [routerLink]="['/userProfile/:idUser']">
                 Profile
