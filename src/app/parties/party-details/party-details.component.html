@@ -46,7 +46,7 @@
                     </div>
                 } @else if (isInParty) {
                     <div clas="col-12">
-                        <button class="btn btn-danger">Leave</button>
+                        <button class="btn btn-danger" (click)="onLeaveClick($event)">Leave</button>
                     </div>
                 }
                 

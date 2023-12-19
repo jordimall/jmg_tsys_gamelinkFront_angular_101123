@@ -56,31 +56,10 @@ export class PartyDetailsComponent {
     this.partyService.getMembers(partyId).subscribe(
       result => {
         this.members = result;
-
-        /*Count how many userParyGameRoles have user and counte them, otherwise 
-          adds the role in emptyRoles array*/
-        for(let i = 0; i < this.members.length; i++){
-          if(this.members[i].user != null){
-            this.membersCount++;
-          } else if (this.emptyRoles.length > 0){
-            //Variable to check that the GameRoles is only added once in the array
-            let alreadyAdded: boolean = false;
-
-            for(let j = 0; j < this.emptyRoles.length; j++){
-              if(this.members[i].gameRole?.id == this.emptyRoles[j].id){
-                alreadyAdded = true;
-              }
-            }
-
-            //If the role is not already in the array then add it
-            if(!alreadyAdded) {
-              this.emptyRoles.push(this.members[i].gameRole as GameRole);
-            }
-          } else {
-            //Introduce the first emptry role
-            this.emptyRoles.push(this.members[i].gameRole as GameRole);
-          }
-        }
+        this.membersCount = 0;
+        
+        this.countJoinedMembers();
+        this.checkEmptyRoles();
 
         //Check if logged user is already in the party
         this.isInParty = this.alreadyInParty();
@@ -94,7 +73,7 @@ export class PartyDetailsComponent {
 
   }
 
-  onJoinClick = (e: Event) => {
+  onJoinClick = (e: Event): void => {
     let clickIndex: number = ((<HTMLInputElement>document.getElementById('party_details_select_role')).value as unknown as number)
     let emptyRoleFound: boolean = false;
     let index: number = 0;
@@ -110,6 +89,9 @@ export class PartyDetailsComponent {
     this.partyService.joinParty(this.party.id, this.members[index].id).subscribe(
       result => {
         this.members = result;
+
+        this.countJoinedMembers();
+
         this.isInParty = this.alreadyInParty();
       },
       error => {
@@ -118,11 +100,38 @@ export class PartyDetailsComponent {
     );
   }
 
+  onLeaveClick = (e: Event): void => {
+    let foundRole: boolean = false;
+    let index: number = 0;
+    
+    while(!foundRole && index < this.members.length) {
+      if(this.members[index].user?.id == this.tokenService.getDecodedToken().id){
+        foundRole = true;
+      } else {
+        index++;
+      }
+    }
+
+    this.partyService.leaveParty(this.party.id, this.members[index].id).subscribe(
+      result => {
+        this.members = result;
+
+        this.checkEmptyRoles();
+        this.countJoinedMembers();
+
+        this.isInParty = this.alreadyInParty();
+      },
+      error => {
+
+      }
+    );
+    
+  }
+
   alreadyInParty = () : boolean => {
     let isInParty = false;
     let i: number =  0;
     while(!isInParty && i < this.members.length){
-      console.log(this.members[i].user?.id + "  " + this.tokenService.getDecodedToken().id);
       if(this.members[i].user?.id == this.tokenService.getDecodedToken().id){
         isInParty = true;
       } else {
@@ -130,5 +139,40 @@ export class PartyDetailsComponent {
       }
     }
     return isInParty;
+  }
+
+  countJoinedMembers = (): void => {
+    this.membersCount = 0;
+    //Count again how many joined members are in the party
+    for(let i = 0; i < this.members.length; i++){
+      if(this.members[i].user != null){
+        this.membersCount++;
+      }
+    }
+  }
+
+  checkEmptyRoles = (): void => {
+    /*Count how many userParyGameRoles have user and counte them, otherwise 
+    adds the role in emptyRoles array*/
+    for(let i = 0; i < this.members.length; i++){
+      if (this.emptyRoles.length > 0){
+        //Variable to check that the GameRoles is only added once in the array
+        let alreadyAdded: boolean = false;
+
+        for(let j = 0; j < this.emptyRoles.length; j++){
+          if(this.members[i].gameRole?.id == this.emptyRoles[j].id){
+            alreadyAdded = true;
+          }
+        }
+
+        //If the role is not already in the array then add it
+        if(!alreadyAdded) {
+          this.emptyRoles.push(this.members[i].gameRole as GameRole);
+        }
+      } else {
+        //Introduce the first emptry role
+        this.emptyRoles.push(this.members[i].gameRole as GameRole);
+      }
+    }
   }
 }
