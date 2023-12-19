@@ -3,6 +3,7 @@ import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { GameRole } from '../../models/game-role.model';
 import { GameRoleService } from '../../services/game-role.service';
 import { MessageService } from './../../services/message.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-game-role',
@@ -26,7 +27,8 @@ export class GameRoleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private gameRoleService: GameRoleService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private tokenService: TokenStorageService
   ) {}
 
   ngOnInit(): void {
@@ -39,11 +41,11 @@ export class GameRoleComponent implements OnInit {
     this.getAll();
   }
 
-  private getAll=():void=>{
+  private getAll = (): void => {
     this.message = this.messageService.getMessage();
 
     this.gameRoleService.allGameRolePaginate(this.numPage, this.size).subscribe(
-      (data:any) => {
+      (data: any) => {
         const { totalPages, content, number, first, last, size } = data;
 
         this.gameRoleList = content;
@@ -55,10 +57,10 @@ export class GameRoleComponent implements OnInit {
         this.initialArray(this.totalPage);
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
-  }
+  };
 
   deleteGameRole = (id: number): void => {
     console.log(id);
@@ -68,7 +70,7 @@ export class GameRoleComponent implements OnInit {
         this.ngOnInit();
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
   };
@@ -77,13 +79,13 @@ export class GameRoleComponent implements OnInit {
     if (this.numPage > 0) {
       this.numPage--;
     }
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/gameRoles?page=${this.numPage + 1}`);
   };
 
   public modifyNumPage = (num: number): void => {
     this.numPage = num;
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/gameRoles?page=${this.numPage + 1}`);
   };
 
@@ -91,7 +93,7 @@ export class GameRoleComponent implements OnInit {
     if (this.numPage < this.totalPage) {
       this.numPage++;
     }
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/gameRoles?page=${this.numPage + 1}`);
   };
 
@@ -99,5 +101,12 @@ export class GameRoleComponent implements OnInit {
     for (let index = 0; index < total; index++) {
       this.arrayNumber[index] = index + 1;
     }
+  };
+
+  public isAdmin = (): boolean => {
+    if (this.tokenService.getDecodedToken().role === 'ADMIN') {
+      return true;
+    }
+    return false;
   };
 }

@@ -38,6 +38,7 @@
     <div
       class="col-12 col-md-2 d-flex justify-content-center align-items-center"
     >
+      @if (isAdmin()) {
       <button class="btn" [routerLink]="['./edit', tag.id]">
         <span class="material-symbols-outlined"> edit </span>
       </button>
@@ -48,6 +49,7 @@
       >
         <span class="material-symbols-outlined"> delete </span>
       </button>
+      }
 
       <div
         class="modal fade"
@@ -102,24 +104,37 @@
     </div>
   </div>
   }
-  <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-2">
+  <nav
+    aria-label="Page navigation example"
+    class="d-flex justify-content-center mt-2"
+  >
     <ul class="pagination">
       @if (first) {
-        <li class="page-item disabled"><button class="page-link">Previous</button></li>
+      <li class="page-item disabled">
+        <button class="page-link">Previous</button>
+      </li>
       }@else {
-        <li class="page-item"><button class="page-link" (click)="decrementNumPage()">Previous</button></li>
-      }
-      @for (item of arrayNumber; track $index) {
-        @if($index===actualPage){
-          <li class="page-item active" aria-current="page"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
-        } @else {
-          <li class="page-item activate"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
-        }
-      }
-      @if(last){
-        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item">
+        <button class="page-link" (click)="decrementNumPage()">Previous</button>
+      </li>
+      } @for (item of arrayNumber; track $index) { @if($index===actualPage){
+      <li class="page-item active" aria-current="page">
+        <button class="page-link" (click)="modifyNumPage($index)">
+          {{ $index + 1 }}
+        </button>
+      </li>
+      } @else {
+      <li class="page-item activate">
+        <button class="page-link" (click)="modifyNumPage($index)">
+          {{ $index + 1 }}
+        </button>
+      </li>
+      } } @if(last){
+      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
       }@else {
-        <li class="page-item"><button class="page-link" (click)="incrementNumPage()">Next</button></li>
+      <li class="page-item">
+        <button class="page-link" (click)="incrementNumPage()">Next</button>
+      </li>
       }
     </ul>
   </nav>

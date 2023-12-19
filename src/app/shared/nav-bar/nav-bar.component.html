@@ -90,7 +90,7 @@
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
           >
-            UserName
+            {{ userName }}
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -100,7 +100,13 @@
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <button class="dropdown-item" (click)="logout()" routerLink="/login"> LogOut </button>
+              <button
+                class="dropdown-item"
+                (click)="logout()"
+                routerLink="/login"
+              >
+                LogOut
+              </button>
             </li>
           </ul>
         </li>

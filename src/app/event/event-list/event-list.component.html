@@ -6,14 +6,16 @@
       <form
         class="d-flex align-items-center justify-content-center"
         role="search"
+        [formGroup]="gameForm"
+        (ngSubmit)="getAll()"
       >
-        <input
-          class="form-control me-2 w-50"
-          type="search"
-          placeholder="Search by game"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <select class="form-select me-2 w-50" formControlName="idGame">
+          <option [value]="''" [selected]="true">Select a game</option>
+          @for (game of gameList; track $index) {
+          <option [ngValue]="game.id">{{ game.title }}</option>
+          }
+        </select>
+        <button class="btn btn-outline-success" type="submit" [disabled]="!gameForm.valid">Search</button>
       </form>
     </div>
   </div>
@@ -66,7 +68,7 @@
       }
     </ul>
   </nav>
-  @if (isUserEventManager()) {
+  @if (isEventManagerOrAdmin()) {
   <div class="row-6 fixed-bottom d-flex justify-content-end">
     <div class="col-1 text-center">
       <button
