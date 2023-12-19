@@ -74,13 +74,13 @@ export class TagComponent implements OnInit {
     if (this.numPage > 0) {
       this.numPage--;
     }
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/tags?page=${this.numPage + 1}`);
   };
 
   public modifyNumPage = (num: number): void => {
     this.numPage = num;
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/tags?page=${this.numPage + 1}`);
   };
 
@@ -88,7 +88,7 @@ export class TagComponent implements OnInit {
     if (this.numPage < this.totalPage) {
       this.numPage++;
     }
-    this.getAll()
+    this.getAll();
     this.router.navigateByUrl(`/tags?page=${this.numPage + 1}`);
   };
 

@@ -52,11 +52,11 @@
       }@else {
         <li class="page-item"><button class="page-link" (click)="decrementNumPage()">Previous</button></li>
       }
-      @for (item of [size]; track $index) {
+      @for (item of arrayNumber; track $index) {
         @if($index===actualPage){
-          <li class="page-item active" aria-current="page"><button class="page-link" (click)="size==$index">{{$index + 1}}</button></li>
+          <li class="page-item active" aria-current="page"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
         } @else {
-          <li class="page-item activate"><button class="page-link" (click)="size=$index">{{$index + 1}}</button></li>
+          <li class="page-item activate"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
         }
       }
       @if(last){
