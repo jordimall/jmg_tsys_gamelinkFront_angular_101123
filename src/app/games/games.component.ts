@@ -23,6 +23,7 @@ export class GamesComponent implements OnInit{
     this.gameService.allGame().subscribe(
       result => {
         this.games = result;
+        console.log(this.games[0].thumbnailUrl)
       },
       error => {
         

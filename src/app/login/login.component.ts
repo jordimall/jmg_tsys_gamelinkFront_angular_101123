@@ -30,10 +30,9 @@ export class LoginComponent {
   login(): void{
     document.getElementById("errorLogin")?.classList.add("hidden");
     if(this.validateLogin()){
-      console.log(this.userName, this.password)
       this.authService.login(this.userName, this.password).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.router.navigateByUrl('/home');
         },

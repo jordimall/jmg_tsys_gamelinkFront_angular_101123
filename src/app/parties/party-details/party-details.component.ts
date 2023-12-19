@@ -19,7 +19,8 @@ export class PartyDetailsComponent {
 
   party: Party = new Party;
   game: Game = new Game;
-  members: UserPartyGameRole[] | undefined = [];
+  members: UserPartyGameRole[] = [];
+  membersCount: number = 0;
 
   constructor(private partyService: PartyService, private gameService: GameService, private route: Router){
 
@@ -27,34 +28,37 @@ export class PartyDetailsComponent {
 
   ngOnInit() {
     let url = this.route.url.split("/");
-    let id = url[url.length-1];
-    this.partyService.getOnePartyById(id as unknown as number).subscribe(
+    let partyId = (url[url.length-1] as unknown as number);
+    this.partyService.getOnePartyById(partyId).subscribe(
       result => {
         this.party = result;
         console.log(this.party);
-        this.gameService.gameById(this.party.id_game as unknown as number).subscribe(
+        this.gameService.gameById(this.party.game?.id as unknown as number).subscribe(
           result => {
             this.game = result
           },
           error => {
             this.route.navigateByUrl("/404");
           }
-        );
-        this.partyService.getMembers(1).subscribe(
-          result => {
-            let tmpParty: Party = result;
-            this.members = tmpParty.userPartyGameRole;
-            console.log(tmpParty.userPartyGameRole);
-          },
-          error => {
-            console.log("err")
-          }
+          
         );
       },
       error => {
 
       }
     );
-    
+    this.partyService.getMembers(partyId).subscribe(
+      result => {
+        this.members = result;
+        for(let i = 0; i < this.members.length; i++){
+          if(this.members[i].user != null){
+            this.membersCount++;
+          }
+        }
+      },
+      error => {
+        this.route.navigateByUrl("/404");
+      }
+    );
   }
 }

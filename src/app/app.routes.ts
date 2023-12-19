@@ -62,12 +62,12 @@ export const routes: Routes = [
     canActivate: [loggedInGuard] 
   },
   {
-    path: 'partyDetails/:idParty',
+    path: 'party-details/:idParty',
     component: PartyDetailsComponent,
     canActivate: [loggedInGuard]
   },
   {
-    path: 'createParty',
+    path: 'create-party/:idParty',
     component: CreatePartyComponent,
     canActivate: [loggedInGuard]
   },
