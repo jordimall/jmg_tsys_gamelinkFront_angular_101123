@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div
+    class="row d-flex flex-column justify-content-center align-items-center h-75vh"
+  >
+    <div class="col-6 text-center">
+      <h1>
+        @if (findOutId()) {Edit to {{ gameRoleForm.value.name }}} @else {Create tag}
+      </h1>
+    </div>
+    <div
+      class="col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2"
+    >
+      <form [formGroup]="gameRoleForm" (ngSubmit)="findOut()">
+        <div class="mb-3">
+          <label for="" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+          @if (gameRoleForm.get('name')?.hasError('required')&&
+          gameRoleForm.get('name')?.touched) {
+          <span class="text-danger">Enter the name of the role</span>
+          }
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Description</label>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="description"
+          ></textarea>
+          <div class="d-flex justify-content-between">
+            @if (gameRoleForm.get('description')?.hasError('required')&&
+            gameRoleForm.get('description')?.touched) {
+            <span class="text-danger"> Write a description for the role </span>
+            }
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">URL icon</label>
+          <input type="text" class="form-control" formControlName="icon_url" />
+          @if (gameRoleForm.get('icon_url')?.hasError('required')&&
+          gameRoleForm.get('icon_url')?.touched) {
+          <span class="text-danger">Enter the URL of the icon</span>
+          }
+        </div>
+        <button
+          [disabled]="!gameRoleForm.valid"
+          type="submit"
+          class="btn btn-primary mb-2"
+        >
+          @if (findOutId()) { Edit } @else { Create }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

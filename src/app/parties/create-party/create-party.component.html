@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+<div class="text-center">
+    <h1>Create a new party</h1>
+</div>
+<div class="container d-flex col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2" id="create_party_form_container">
+    <div class="row ">
+        <p class="form-label">Name:</p>
+    </div>
+    <div class="row ">
+        <input type="text" name="" id="" class="form-control" id="create_party_name">
+        <p hidden id="create_party_name_err" class="create_party_err">Enter the name of the party</p>
+    </div>
+    <div class="row ">
+        <p class="form-label">Description:</p>
+    </div>
+    <div class="row ">
+        <textarea name="" id=""  rows="3" class="form-control" id="create_party_description"></textarea>
+        <p hidden id="create_party_description_err" class="create_party_err">Write a description for the party</p>
+    </div>
+    <div class="row " id="roles_row">
+        <div class="row d-flex" id="create_party_role_selection_row">
+            <p class="col-1">Roles: </p>
+            @for (role of gameRoles; track $index) {
+                <img src="{{role.icon_url}}" alt="{{role.name}}" class="create_party_role_img" (click)="onRoleClick($event, role)">
+            }
+        </div>
+        <p hidden id="create_party_role_err" class="create_party_err">Select at least one role</p>
+    </div>
+
+    @for (role of gameRolesInputElements; track $index) {  
+        <div class="row  create_party_role_quantity_selector_row">
+            <p class="col-2 form-label">{{role.name}}</p>
+            <input class="col-4 form-control create_party_role_quantity" type="number" name="" id="" min="1" value="1">
+        </div>
+    } @empty {
+    }
+
+    <div class="row">
+        <button class="col-1 btn btn-primary" (click)="onCreateClick($event)" id="create_party_btn">Create</button>
+    </div>
+</div>
