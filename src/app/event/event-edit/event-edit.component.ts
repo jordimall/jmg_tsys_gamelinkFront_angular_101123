@@ -42,7 +42,7 @@ export class EventEditComponent implements OnInit {
       { value: this.event.end, disabled: true },
       Validators.required
     ),
-    id_game: new FormControl(this.event.id_game, Validators.required),
+    id_game: new FormControl(this.event.idGame, Validators.required),
   });
 
   constructor(
@@ -78,7 +78,7 @@ export class EventEditComponent implements OnInit {
   private getEvent = (id: number): void => {
     this.eventService.getEvent(id).subscribe(
       (data) => {
-        const selectedGame = this.listGame.find(game => game.id === data.id_game?.id);
+        const selectedGame = this.listGame.find(game => game.id === data.idGame?.id);
         this.eventForm.patchValue({
           name: data.name,
           description: data.description,

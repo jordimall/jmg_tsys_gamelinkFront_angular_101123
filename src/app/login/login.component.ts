@@ -62,7 +62,7 @@ export class LoginComponent {
   checkEmpty(field: string | undefined, errorField: HTMLElement | null): void{
     if(field === "") {
         errorField?.classList.remove("hidden");
-    } 
+    }
     else {
         errorField?.classList.add("hidden");
     }
