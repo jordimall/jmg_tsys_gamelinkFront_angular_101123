@@ -102,6 +102,27 @@
     </div>
   </div>
   }
+  <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-2">
+    <ul class="pagination">
+      @if (first) {
+        <li class="page-item disabled"><button class="page-link">Previous</button></li>
+      }@else {
+        <li class="page-item"><button class="page-link" (click)="decrementNumPage()">Previous</button></li>
+      }
+      @for (item of arrayNumber; track $index) {
+        @if($index===actualPage){
+          <li class="page-item active" aria-current="page"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
+        } @else {
+          <li class="page-item activate"><button class="page-link" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
+        }
+      }
+      @if(last){
+        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      }@else {
+        <li class="page-item"><button class="page-link" (click)="incrementNumPage()">Next</button></li>
+      }
+    </ul>
+  </nav>
 </div>
 
 }@else {Procesando la solicitud}

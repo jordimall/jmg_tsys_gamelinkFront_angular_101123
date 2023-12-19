@@ -56,7 +56,7 @@
         @if($index===actualPage){
           <li class="page-item active" aria-current="page"><button class="page-link" (click)="size==$index">{{$index + 1}}</button></li>
         } @else {
-          <li class="page-item activate"><button class="page-link" (click)="size==$index">{{$index + 1}}</button></li>
+          <li class="page-item activate"><button class="page-link" (click)="size=$index">{{$index + 1}}</button></li>
         }
       }
       @if(last){
