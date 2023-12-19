@@ -31,7 +31,6 @@ export class TagComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
-      console.log(params.get('page'));
       if (params.get('page') === null) {
         this.numPage = Number.parseInt(params.get('page') ?? '1') - 1 ?? 0;
       }
