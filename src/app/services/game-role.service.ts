@@ -32,7 +32,7 @@ export class GameRoleService {
     return this.http.delete(`${baseURL}/${id}`);
   };
 
-  getAllGameRoleByGame = (id: number): Observable<any> => {
+  getAllGameRoleByGame = (id: number | undefined): Observable<any> => {
     return this.http.get<any>(`${baseURL}/all?idGame=${id}`);
   }
 }

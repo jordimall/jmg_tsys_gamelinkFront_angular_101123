@@ -26,6 +26,7 @@ import { GameRoleComponent } from './gameroles/game-role/game-role.component';
 import { CreateEditGameRoleComponent } from './gameroles/create-edit-game-role/create-edit-game-role.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { loggedInGuard } from './guards/logged-in.guard';
+import { EditPartyComponent } from './parties/edit-party/edit-party.component';
 export const routes: Routes = [
   {
     path: '',
@@ -71,11 +72,16 @@ export const routes: Routes = [
     canActivate: [loggedInGuard]
   },
   {
-    path: 'myParties',
+    path: 'edit-party/:idParty',
+    component: EditPartyComponent,
+    canActivate: [loggedInGuard]
+  },
+  {
+    path: 'my-parties',
     component: PartiesComponent,
     canActivate: [loggedInGuard],
     children: [
-      { path: '', component: MyPartiesComponent },
+      { path: '', redirectTo: 'created', pathMatch: 'full' },
       { path: 'created', component: MyPartiesCreatedComponent },
       { path: 'joined', component: MyPartiesJoinedComponent },
     ],

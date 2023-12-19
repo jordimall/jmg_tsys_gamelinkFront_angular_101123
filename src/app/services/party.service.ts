@@ -19,6 +19,14 @@ export class PartyService {
     return this.http.get<any>(baseURL+'/all?idGame='+(id as unknown as string));
   };
 
+  getOwnParties = (): Observable<any> => {
+    return this.http.get<any>(baseURL+'/own');
+  };
+
+  getOwnPartyById = (id: number): Observable<Party> => {
+    return this.http.get<Party>(baseURL+'/own/id/'+id);
+  };
+
   getOnePartyById = (id: number): Observable<Party> => {
     return this.http.get<Party>(baseURL+'/id/'+id);
   }
