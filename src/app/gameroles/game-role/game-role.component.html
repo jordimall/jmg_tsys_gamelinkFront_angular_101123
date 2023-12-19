@@ -1,107 +1,114 @@
 @if (gameRoleList!==null) {
-
-<div
-  class="container d-flex flex-column justify-content-center align-items-center"
-  style="height: 95vh"
->
-  <div class="row d-flex justify-content-start w-100 mt-2">
-    <div class="col-5 col-md-3">
-      <button class="btn btn-primary" [routerLink]="['./create']">
-        New Role
-      </button>
-    </div>
-    <div class="col-7 col-md-9">
-      @if (message!=='') {
-      <div
-        class="bg-success border-1 border-success p-2 text-dark bg-opacity-10 d-flex justify-content-center align-items-center"
-      >
-        <p class="m-auto">{{ message }}</p>
+  <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 95vh">
+    <div class="row d-flex justify-content-start w-100 mt-2">
+      <div class="col-4 col-sm-6 col-md-4">
+        <button class="btn btn-primary fs-5 fs-md-4 fs-lg-3" [routerLink]="['./create']">New Role</button>
       </div>
-      }
+      <div class="col-8 col-sm-6 col-md-8">
+        @if (message!=='') {
+        <div class="bg-success border-1 border-success p-2 text-dark bg-opacity-10 d-flex justify-content-center align-items-center">
+          <p class="m-auto fs-6 fs-md-5 fs-lg-4">{{ message }}</p>
+        </div>
+        }
+      </div>
     </div>
-  </div>
-
-  @for (gameRole of gameRoleList; track $index) {
+    @for (gameRole of gameRoleList; track $index) {
     <div class="row d-flex justify-content-between mt-2 border-1 border-black bg-secondary-subtle text-center w-100 w-md-75 h-13vh">
-      <div class="col-12 col-md-2 d-flex justify-content-center align-items-center">
-        <p class="my-auto">{{ gameRole.name }}</p>
+      <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
+        <p class="my-auto fs-5 fs-md-4 fs-lg-3">{{ gameRole.name }}</p>
       </div>
-      <div class="col-12 col-md-4 d-flex justify-content-center align-items-center">
-        <p class="my-auto">{{ gameRole.description }}</p>
+      <div class="col-5 col-md-4 d-flex justify-content-center align-items-center">
+        <p class="my-auto fs-5 fs-md-4 fs-lg-3">{{ gameRole.description }}</p>
       </div>
-      <div class="col-12 col-md-4 d-flex justify-content-center align-items-center">
+      <div class="col-3 col-md-4 d-flex justify-content-center align-items-center">
         <img class="img-max" [src]="gameRole.icon_url" alt="image role" />
       </div>
-      <div class="col-12 col-md-2 d-flex justify-content-center align-items-center">
-        <button class="btn" [routerLink]="['./edit', gameRole.id]">
+      <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
+        <button class="btn fs-5 fs-md-4 fs-lg-3" [routerLink]="['./edit', gameRole.id]">
           <span class="material-symbols-outlined"> edit </span>
         </button>
-        <button
-          class="btn"
-          data-bs-toggle="modal"
-          [attr.data-bs-target]="['#staticBackdrop' + gameRole.id]"
-        >
+        <button class="btn fs-5 fs-md-4 fs-lg-3" data-bs-toggle="modal" [attr.data-bs-target]="['#staticBackdrop' + gameRole.id]">
           <span class="material-symbols-outlined"> delete </span>
         </button>
       </div>
-  </div>
-
-
-  <div
-    class="modal fade"
-    id="staticBackdrop{{ gameRole.id }}"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
-    tabindex="-1"
-    aria-labelledby="staticBackdropLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">
-            Surely you want to remove the following Role
-          </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <p>Name: {{ gameRole.name }}</p>
+    </div>
+    <div
+      class="modal fade"
+      id="staticBackdrop{{ gameRole.id }}"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fs-md-4 fs-lg-3" id="staticBackdropLabel">
+              Surely you want to remove the following Role
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-          <div>
-            <p>Description: {{ gameRole.description }}</p>
+          <div class="modal-body">
+            <div>
+              <p class="fs-5 fs-md-4 fs-lg-3">Name: {{ gameRole.name }}</p>
+            </div>
+            <div>
+              <p class="fs-5 fs-md-4 fs-lg-3">Description: {{ gameRole.description }}</p>
+            </div>
+            <div class="d-flex">
+              <p class="my-auto fs-5 fs-md-4 fs-lg-3">Icon:</p>
+              <img class="img-max" [src]="gameRole.icon_url" alt="image role" />
+            </div>
           </div>
-          <div class="d-flex">
-            <p class="my-auto">Icon:</p>
-            <img class="img-max" [src]="gameRole.icon_url" alt="image role" />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary fs-5 fs-md-4 fs-lg-3"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary fs-5 fs-md-4 fs-lg-3"
+              (click)="deleteGameRole(gameRole.id)"
+              data-bs-dismiss="modal"
+            >
+              Delete
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="deleteGameRole(gameRole.id)"
-            data-bs-dismiss="modal"
-          >
-            Delete
-          </button>
         </div>
       </div>
     </div>
+    }
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-2">
+      <ul class="pagination">
+        @if (first) {
+          <li class="page-item disabled"><button class="page-link fs-5 fs-md-4 fs-lg-3">Previous</button></li>
+        }@else {
+          <li class="page-item"><button class="page-link fs-5 fs-md-4 fs-lg-3" (click)="decrementNumPage()">Previous</button></li>
+        }
+        @for (item of arrayNumber; track $index) {
+          @if($index===actualPage){
+            <li class="page-item active" aria-current="page"><button class="page-link fs-5 fs-md-4 fs-lg-3" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
+          } @else {
+            <li class="page-item activate"><button class="page-link fs-5 fs-md-4 fs-lg-3" (click)="modifyNumPage($index)">{{$index + 1}}</button></li>
+          }
+        }
+        @if(last){
+          <li class="page-item disabled"><a class="page-link fs-5 fs-md-4 fs-lg-3" href="#">Next</a></li>
+        }@else {
+          <li class="page-item"><button class="page-link fs-5 fs-md-4 fs-lg-3" (click)="incrementNumPage()">Next</button></li>
+        }
+      </ul>
+    </nav>
   </div>
-  }
-</div>
+
 
 }@else {Procesando la solicitud}
