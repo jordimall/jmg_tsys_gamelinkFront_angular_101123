@@ -33,7 +33,6 @@ export class LoginComponent {
       console.log(this.userName, this.password)
       this.authService.login(this.userName, this.password).subscribe(
         data => {
-          console.log(data)
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.router.navigateByUrl('/home');

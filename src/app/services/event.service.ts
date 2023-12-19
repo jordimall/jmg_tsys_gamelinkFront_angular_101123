@@ -19,7 +19,7 @@ export class EventService {
   };
 
   addEvent = (data: Event): Observable<any> => {
-    return this.http.post(baseURL, data);
+    return this.http.post(`${baseURL}/add`, data);
   };
 
   editEvent = (id: number, data: Event): Observable<any> => {

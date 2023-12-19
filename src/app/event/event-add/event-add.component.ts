@@ -23,9 +23,7 @@ export class EventAddComponent implements OnInit {
   event: Event = {};
   listGame: Game[] | any;
   date: Date = new Date();
-  minDate: string = `${this.date.getFullYear()}-${
-    this.date.getMonth() + 1
-  }-${this.date.getDate()}`;
+  minDate: string = `${this.date.getFullYear()}-${ this.date.getMonth() + 1 }-${this.date.getDate()}`;
   limitLength: number = 255;
 
   eventForm = new FormGroup({

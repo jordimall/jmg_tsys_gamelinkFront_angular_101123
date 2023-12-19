@@ -41,7 +41,7 @@ export class RegisterComponent {
   checkEmpty(field: string | undefined, errorField: HTMLElement | null): void{
     if(field === "") {
         errorField?.classList.remove("hidden");
-    } 
+    }
     else {
         errorField?.classList.add("hidden");
     }
@@ -51,11 +51,11 @@ export class RegisterComponent {
       }
     }
   }
-  
+
   register(){
     if(this.validateRegister()){
       this.authService.register(this.userName, this.email, this.password).subscribe(
-        data=> {
+        (data)=> {
           console.log(data);
           this.router.navigateByUrl('/login');
         },
