@@ -34,4 +34,8 @@ export class PartyService {
   joinParty = (id: number | undefined, data: number | undefined): Observable<UserPartyGameRole[]> => {
     return this.http.post<UserPartyGameRole[]>(`${baseURL}/join/${id}`, data);
   }
+
+  leaveParty = (id: number | undefined, data: number | undefined): Observable<UserPartyGameRole[]> => {
+    return this.http.post<UserPartyGameRole[]>(`${baseURL}/leave/${id}`, data);
+  }
 }
