@@ -27,7 +27,11 @@ export class PartyService {
     return this.http.get<UserPartyGameRole[]>(baseURL+"/members/"+id);
   }
 
-  createParty = (party: Party): Observable<Party> => {
-    return this.http.post<Party>(baseURL+"/add", party);
+  createParty = (data: Party): Observable<Party> => {
+    return this.http.post<Party>(baseURL+"/add", data);
+  }
+
+  joinParty = (id: number | undefined, data: number | undefined): Observable<UserPartyGameRole[]> => {
+    return this.http.post<UserPartyGameRole[]>(`${baseURL}/join/${id}`, data);
   }
 }
