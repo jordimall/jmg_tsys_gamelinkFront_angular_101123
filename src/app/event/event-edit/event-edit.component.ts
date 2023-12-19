@@ -12,7 +12,6 @@ import { Game } from '../../models/game.model';
 import { EventService } from '../../services/event.service';
 import { GameService } from '../../services/game.service';
 
-
 @Component({
   selector: 'app-event-edit',
   standalone: true,
@@ -23,7 +22,7 @@ import { GameService } from '../../services/game.service';
 export class EventEditComponent implements OnInit {
   id: any;
   event: Event = {};
-  listGame: Game[] =[];
+  listGame: Game[] = [];
   date: Date = new Date();
   minDate: string = `${this.date.getFullYear()}-${
     this.date.getMonth() + 1
@@ -78,18 +77,20 @@ export class EventEditComponent implements OnInit {
   private getEvent = (id: number): void => {
     this.eventService.getEvent(id).subscribe(
       (data) => {
-        const selectedGame = this.listGame.find(game => game.id === data.idGame?.id);
+        const selectedGame = this.listGame.find(
+          (game) => game.id === data.idGame?.id
+        );
         this.eventForm.patchValue({
           name: data.name,
           description: data.description,
           status: data.status,
           start: data.start,
           end: data.end,
-          id_game: selectedGame
+          id_game: selectedGame,
         });
       },
       (err) => {
-        console.log({ status: err.status, messaje: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
   };

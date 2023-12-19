@@ -14,6 +14,10 @@ export class EventService {
     return this.http.get<any[]>(`${baseURL}/all?page=${numPage}`);
   };
 
+  allEventPaginateByGame = (numPage: number, idGame:string): Observable<Event[]> => {
+    return this.http.get<any[]>(`${baseURL}/all?page=${numPage}&idGame=${idGame}`);
+  };
+
   getEvent = (id: number): Observable<Event> => {
     return this.http.get<Event>(`${baseURL}/id/${id}`);
   };

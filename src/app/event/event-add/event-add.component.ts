@@ -73,7 +73,7 @@ export class EventAddComponent implements OnInit {
         this.router.navigate([`./event/show/${data.id}`]);
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
   };

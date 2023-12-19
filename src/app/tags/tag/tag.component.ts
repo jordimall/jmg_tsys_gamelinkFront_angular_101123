@@ -3,6 +3,7 @@ import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { Tag } from '../../models/tag.model';
 import { TagService } from '../../services/tag.service';
 import { MessageService } from './../../services/message.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-tag',
@@ -26,7 +27,8 @@ export class TagComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private tagService: TagService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private tokenService: TokenStorageService
   ) {}
 
   ngOnInit(): void {
@@ -96,5 +98,12 @@ export class TagComponent implements OnInit {
     for (let index = 0; index < total; index++) {
       this.arrayNumber[index] = index + 1;
     }
+  };
+
+  public isAdmin = (): boolean => {
+    if (this.tokenService.getDecodedToken().role === 'ADMIN') {
+      return true;
+    }
+    return false;
   };
 }
