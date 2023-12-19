@@ -29,20 +29,27 @@
                 }
             </div>
             <div class="row" id="party_details_footer">
-                <div clas="col-12">
-                    <select name="party_details_select_role" id="party_details_select_role">
-                        @for (member of members; track $index) {
-                                @if(member.user == null) {
-                                    <option value="{{member.gameRole}}" class="party_details_option_role">
-                                        {{member.gameRole?.name}}
-                                    </option>
-                                }
-                        }
-                    </select>
-                </div>
-                <div clas="col-12">
-                    <button class="btn btn-primary">Join</button>
-                </div>
+                @if (emptyRoles.length > 0 && !isInParty) {
+                    <div clas="col-12">
+                        <select name="party_details_select_role" id="party_details_select_role">
+                            @for (role of emptyRoles; track $index) {
+                                <option value="{{$index}}" class="party_details_option_role">
+                                    {{role.name}}
+                                </option>
+                            
+                            }
+                        </select>
+                    </div>
+                
+                    <div clas="col-12">
+                        <button class="btn btn-primary" (click)="onJoinClick($event)">Join</button>
+                    </div>
+                } @else if (isInParty) {
+                    <div clas="col-12">
+                        <button class="btn btn-danger">Leave</button>
+                    </div>
+                }
+                
             </div>
         </div>
     </div>
