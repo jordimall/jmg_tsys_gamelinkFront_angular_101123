@@ -1,1 +1,54 @@
-<p>create-edit-game works!</p>
+<div class="container-fluid">
+  <div
+    class="row d-flex flex-column justify-content-center align-items-center h-75vh"
+  >
+    <div class="col-6 text-center">
+      <h1>
+        @if (findOutId()) {Edit to {{ game.title }}} @else {Create game}
+      </h1>
+    </div>
+    <div
+      class="col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2"
+    >
+      <form [formGroup]="gameForm" (ngSubmit)="findOut()">
+        <div class="mb-3">
+          <label for="" class="form-label">Title</label>
+          <input type="text" class="form-control" formControlName="title" />
+          @if (gameForm.get('title')?.hasError('required')&&
+          gameForm.get('title')?.touched) {
+          <span class="text-danger">Enter the title of the game</span>
+          }
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Thumbnail URL</label>
+          <textarea
+            type="text"
+            class="form-control"
+            formControlName="thumbnailUrl"
+          ></textarea>
+          <div class="d-flex justify-content-between">
+            @if (gameForm.get('thumbnailUrl')?.hasError('required')&&
+            gameForm.get('thumbnailUrl')?.touched) {
+            <span class="text-danger">Write the url of the thumbnail </span>
+            }
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Video game page url</label>
+          <input type="text" class="form-control" formControlName="url" />
+          @if (gameForm.get('url')?.hasError('required')&&
+          gameForm.get('url')?.touched) {
+          <span class="text-danger">Write the url of the video game page</span>
+          }
+        </div>
+        <button
+          [disabled]="!gameForm.valid"
+          type="submit"
+          class="btn btn-primary mb-2"
+        >
+          @if (findOutId()) { Edit } @else { Create }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

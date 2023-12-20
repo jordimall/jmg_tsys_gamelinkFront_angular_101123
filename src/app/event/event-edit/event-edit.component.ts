@@ -24,9 +24,7 @@ export class EventEditComponent implements OnInit {
   event: Event = {};
   listGame: Game[] = [];
   date: Date = new Date();
-  minDate: string = `${this.date.getFullYear()}-${
-    this.date.getMonth() + 1
-  }-${this.date.getDate()}`;
+  minDate: string = `${this.date.getFullYear()}-${ this.date.getMonth() + 1 }-${this.date.getDate()}`;
   limitLength: number = 255;
 
   eventForm = new FormGroup({
@@ -68,7 +66,7 @@ export class EventEditComponent implements OnInit {
           this.getEvent(this.id);
         },
         (err) => {
-          console.log({ status: err.status, messaje: err.message });
+          this.router.navigateByUrl('/404');
         }
       );
     }
@@ -103,7 +101,7 @@ export class EventEditComponent implements OnInit {
         this.router.navigate([`./event/show/${data.id}`]);
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
   };

@@ -61,7 +61,7 @@ export class EventAddComponent implements OnInit {
         this.listGame = data;
       },
       (err) => {
-        console.log({ status: err.status, messaje: err.message });
+        this.router.navigateByUrl('/404');
       }
     );
   }
