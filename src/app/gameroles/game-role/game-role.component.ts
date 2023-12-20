@@ -70,6 +70,7 @@ export class GameRoleComponent implements OnInit {
         this.ngOnInit();
       },
       (err) => {
+        console.log(err)
         this.router.navigateByUrl('/404');
       }
     );
