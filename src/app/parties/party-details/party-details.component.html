@@ -6,11 +6,11 @@
         </div>
     </div>
     <div class="row">
-        <img src="{{game.thumbnail_url}}" alt="" class="col-7 offset-2 col-sm-7 offset-sm-2 col-md-5 offset-md-4 col-lg-3 offset-lg-0 list_parties_game_image">
+        <img src="{{game.thumbnailUrl}}" alt="" class="col-7 offset-2 col-sm-7 offset-sm-2 col-md-5 offset-md-4 col-lg-3 offset-lg-0 list_parties_game_image">
         <div class="container col-10 col-md-12 col-lg-7" id="party_details_frame">
             <div class=" row d-flex justify-content-between party_details_header">
                 <p class="col-6 " id="party_deatils_name">{{party.name}}</p>
-                <p class="col-1">0/{{party.max_players}}</p>
+                <p class="col-1">{{membersCount}}/{{party.maxPlayers}}</p>
             </div>
             <div class="row party_details_header">
                 <p>{{party.description}}</p>
@@ -20,6 +20,7 @@
                     <div class="d-flex justify-content-between align-items-center party_details_player_list_item">
                         @if(member.user != null) {
                             <p class="col-6">{{member.user?.userName}}</p>
+
                         } @else {
                             <p class="party_details_empty">empty</p>
                         }
@@ -28,20 +29,27 @@
                 }
             </div>
             <div class="row" id="party_details_footer">
-                <div clas="col-12">
-                    <select name="party_details_select_role" id="party_details_select_role">
-                        @for (member of members; track $index) {
-                                @if(member.user == null) {
-                                    <option value="{{member.gameRole}}" class="party_details_option_role">
-                                        {{member.gameRole?.name}}
-                                    </option>
-                                }
-                        }
-                    </select>
-                </div>
-                <div clas="col-12">
-                    <button class="btn btn-primary">Join</button>
-                </div>
+                @if (emptyRoles.length > 0 && !isInParty) {
+                    <div clas="col-12">
+                        <select name="party_details_select_role" id="party_details_select_role">
+                            @for (role of emptyRoles; track $index) {
+                                <option value="{{$index}}" class="party_details_option_role">
+                                    {{role.name}}
+                                </option>
+                            
+                            }
+                        </select>
+                    </div>
+                
+                    <div clas="col-12">
+                        <button class="btn btn-primary" (click)="onJoinClick($event)">Join</button>
+                    </div>
+                } @else if (isInParty) {
+                    <div clas="col-12">
+                        <button class="btn btn-danger" (click)="onLeaveClick($event)">Leave</button>
+                    </div>
+                }
+                
             </div>
         </div>
     </div>

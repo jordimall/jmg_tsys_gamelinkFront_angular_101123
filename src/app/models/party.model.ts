@@ -1,11 +1,12 @@
+import { Game } from "./game.model";
 import { UserPartyGameRole } from "./user-party-game-role.model";
 
 export class Party {
     id?: number;
     name?: string;
-    max_players?: number;
+    maxPlayers?: number;
     description?: string;
-    id_game?: number;
+    game?: Game;
     id_user?: number;
-    userPartyGameRole?: UserPartyGameRole[];
+    userPartyGameRoles?: UserPartyGameRole[];
 }

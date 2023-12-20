@@ -27,7 +27,7 @@ export class EventShowComponent implements OnInit {
           this.event = data;
         },
         (err) => {
-          console.log({ status: err.status, message: err.message });
+          this.router.navigateByUrl('/404');
         }
       );
     }

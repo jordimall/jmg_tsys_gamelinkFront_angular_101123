@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list/event-list.component';
 import { EventShowComponent } from './event/event-show/event-show.component';
@@ -59,18 +58,18 @@ export const routes: Routes = [
       { path: 'edit/:id', component: EventEditComponent, canActivate: [canManageEventsGuard] },
     ],
   },
-  { 
-    path: 'parties/:idGame', 
+  {
+    path: 'parties/:idGame',
     component: ListPartyComponent,
-    canActivate: [loggedInGuard] 
+    canActivate: [loggedInGuard]
   },
   {
-    path: 'partyDetails/:idParty',
+    path: 'party-details/:idParty',
     component: PartyDetailsComponent,
     canActivate: [loggedInGuard]
   },
   {
-    path: 'createParty',
+    path: 'create-party/:idParty',
     component: CreatePartyComponent,
     canActivate: [loggedInGuard]
   },
