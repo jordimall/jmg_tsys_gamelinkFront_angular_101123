@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Event } from '../../models/event.model';
 import { EventService } from '../../services/event.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-event-show',
@@ -16,7 +17,8 @@ export class EventShowComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private eventService: EventService
+    private eventService: EventService,
+    private tokenService: TokenStorageService
   ) {}
 
   ngOnInit(): void {
@@ -33,8 +35,10 @@ export class EventShowComponent implements OnInit {
     }
   }
 
-  public isUserEventManager = (): boolean => {
-    // Consulta al servicio de autenticación
-    return true;
+  public isUserEventManagerOrAdmin = (): boolean => {
+    if (['EVENT_MANAGER', 'ADMIN'].includes(this.tokenService.getUser().role)) {
+      return true;
+    }
+    return false;
   };
 }
