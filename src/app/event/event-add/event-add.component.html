@@ -67,14 +67,14 @@
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Game</label>
-        <select class="form-select" formControlName="id_game">
+        <select class="form-select" formControlName="idGame">
           <option [value]="''" [selected]="true">Select a game</option>
           @for (game of listGame; track $index) {
           <option [ngValue]="game">{{ game.title }}</option>
           }
         </select>
-        @if (eventForm.get('id_game')?.hasError('required') &&
-        eventForm.get('id_game')?.touched) {
+        @if (eventForm.get('idGame')?.hasError('required') &&
+        eventForm.get('idGame')?.touched) {
         <span class="text-danger"> You have to select a game </span>
         }
       </div>

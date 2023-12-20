@@ -13,7 +13,8 @@ import { Game } from '../../models/game.model';
 import { GameRoleService } from '../../services/game-role.service';
 import { InfoMessageService } from '../../services/info-message.service';
 import { GameService } from '../../services/game.service';
-import arrayNotEmpty from './validator-form-control';
+import { MessageService } from '../../services/message.service';
+import arrayNotEmpty2 from './validator-form-control';
 import { GameGameRole } from '../../models/game-game-role.model';
 import { GameGameRoleService } from '../../services/game-game-role.service';
 
@@ -38,9 +39,9 @@ export class CreateEditGameRoleComponent implements OnInit {
       Validators.required
     ),
     icon_url: new FormControl(this.gameRole.icon_url, Validators.required),
-    games: new FormControl(''),
+    games: new FormControl('',),
     gameGameRole: new FormControl(
-      this.selectedGames || []
+      this.selectedGames || [],
     ),
   });
 
@@ -110,6 +111,7 @@ export class CreateEditGameRoleComponent implements OnInit {
       gameGameRole.idGame = this.selectedGames[index];
       newGameRole.gameGameRole.push(gameGameRole);
     }
+    console.log(newGameRole)
     if (this.findOutId()) {
       this.gameRoleService.editGameRole(this.id, newGameRole).subscribe(
         (data) => {
