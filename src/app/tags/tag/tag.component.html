@@ -4,6 +4,7 @@
   class="container d-flex flex-column justify-content-center align-items-center"
   style="height: 95vh"
 >
+  @if (isAdmin()) {
   <div class="row d-flex justify-content-start w-100 mt-2">
     <div class="col-5 col-md-3">
       <button class="btn btn-primary" [routerLink]="['./create']">
@@ -20,8 +21,7 @@
       }
     </div>
   </div>
-
-  @for (tag of tagList; track $index) {
+  } @for (tag of tagList; track $index) {
   <div
     class="row d-flex justify-content-between mt-2 border-1 border-black bg-secondary-subtle text-center w-100 w-md-75 h-13vh"
   >
@@ -53,7 +53,7 @@
 
       <div
         class="modal fade"
-        id="staticBackdrop{{tag.id}}"
+        id="staticBackdrop{{ tag.id }}"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
