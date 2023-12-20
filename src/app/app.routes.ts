@@ -73,7 +73,7 @@ export const routes: Routes = [
     canActivate: [loggedInGuard],
   },
   {
-    path: 'create-party',
+    path: 'create-party/:id',
     component: CreatePartyComponent,
     canActivate: [loggedInGuard],
   },
