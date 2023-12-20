@@ -39,7 +39,7 @@ export class EventEditComponent implements OnInit {
       { value: this.event.end, disabled: true },
       Validators.required
     ),
-    id_game: new FormControl(this.event.idGame, Validators.required),
+    idGame: new FormControl(this.event.idGame, Validators.required),
   });
 
   constructor(
@@ -84,7 +84,7 @@ export class EventEditComponent implements OnInit {
           status: data.status,
           start: data.start,
           end: data.end,
-          id_game: selectedGame,
+          idGame: selectedGame,
         });
       },
       (err) => {
@@ -95,7 +95,6 @@ export class EventEditComponent implements OnInit {
 
   onSubmit = (): void => {
     this.event = this.eventForm.value as Event;
-
     this.eventService.editEvent(this.id, this.event).subscribe(
       (data) => {
         this.router.navigate([`./event/show/${data.id}`]);
