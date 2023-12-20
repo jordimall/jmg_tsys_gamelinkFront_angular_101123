@@ -1,5 +1,14 @@
 <app-nav-bar></app-nav-bar>
-<div class="container">
-    
+<div class="container col-md-10 col-lg-8 col-xl-6" id="my_parties_nav">
+    <div class="row d-flex text-center">
+        <div class="col-2 my_parties_nav_item" id="my_parties_nav_created" routerLink="created">
+            <p>Created</p>
+        </div>
+        <div class="col-2 my_parties_nav_item my_parties_nav_no_selected" id="my_parties_nav_joined" routerLink="joined">
+            <p>Joined</p>
+        </div>
+    </div>
 </div>
-<router-outlet></router-outlet>
+<div class="container col-md-10 col-lg-8 col-xl-6" id="my_parties_container">
+    <router-outlet></router-outlet>
+</div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from '../../services/message.service';
 import { UsersService } from '../../services/users.service';
 import { NavBarComponent } from '../../shared/nav-bar/nav-bar.component';
+import { InfoMessageService } from '../../services/info-message.service';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,7 @@ export class UsersComponent {
 
   users:any = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UsersService, private messageService: MessageService){}
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UsersService, private messageService: InfoMessageService){}
 
   ngOnInit(){
     this.route.queryParamMap.subscribe((params) => {

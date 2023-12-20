@@ -12,8 +12,5 @@ export class UserPartyGameRoleService {
 
   constructor(private http: HttpClient) { }
 
-  addGameRole = (data: UserPartyGameRole): Observable<any> => {
-    return this.http.post(baseURLLocalBack + "/add", data);
-  };
 
 }

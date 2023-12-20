@@ -46,11 +46,6 @@ export class UsersService {
   }
 
   updateUser(user: User){
-    return this.http.put(api+"update", {
-      userName: user.userName,
-      email: user.email,
-      password: user.password,
-      role: this.tokenStorage.getUser().role
-    }, httpOptions);
+    return this.http.put(api+"update", user, httpOptions);
   }
 }

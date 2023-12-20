@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const api="https://ajo-tsys-gamelink-spring-1011-production.up.railway.app/"
+const apiLocal="http://localhost:8082/"
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -16,7 +17,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(userName: string, password: string): Observable<any> {
-    console.log(userName, password)
     return this.http.post(api + 'login', {
       userName,
       password
