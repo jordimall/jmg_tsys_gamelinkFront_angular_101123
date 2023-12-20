@@ -10,15 +10,22 @@ import { TokenStorageService } from '../../services/token-storage.service';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
-  constructor(private token:TokenStorageService) {}
+  userName: string = '';
+  constructor(private token: TokenStorageService) {
+    this.userName = token.getDecodedToken().userName;
+  }
   public isUserAdmin = (): boolean => {
-    // Consulta al servicio de autenticación
-    return true;
+    if (this.token.getDecodedToken().role === 'ADMIN') {
+      return true;
+    }
+    return false;
   };
 
   public isUserEventManager = (): boolean => {
-    // Consulta al servicio de autenticación
-    return true;
+    if (this.token.getDecodedToken().role === 'EVENT_MANAGER') {
+      return true;
+    }
+    return false;
   };
 
   public logout = (): void => {
