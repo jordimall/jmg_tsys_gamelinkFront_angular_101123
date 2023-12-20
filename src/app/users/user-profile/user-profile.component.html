@@ -1,1 +1,42 @@
-<p>user-profile works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container">
+<div class="row justify-content-center align-items-center mt-3">
+    @if (user!==undefined) {
+    <div class="card w-50">
+    <div class="card-body text-center">
+        <h1 class="card-title">Profile</h1>
+        <div class="row mt-5 mb-2 align-items-center justify-content-center text-start">
+            <div class="col">
+                <p class="card-text">
+                    Username:
+                </p>
+            </div>
+            <div class="col ">
+                <p class="card-text">
+                    {{user.userName}}
+                </p>
+            </div>
+        </div>
+        <div class="row mb-2 align-items-center justify-content-center text-start">
+            <div class="col">
+                <p class="card-text">
+                    Email:
+                </p>
+            </div>
+            <div class="col">
+                <p class="card-text">
+                    {{user.email}}
+                </p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <button class="btn btn-primary rounded-pill btn-color w-75" type="button" routerLink ="edit">Edit profile</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+</div>
+</div>
+<router-outlet></router-outlet>

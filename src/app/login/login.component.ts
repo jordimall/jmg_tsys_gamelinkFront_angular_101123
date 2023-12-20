@@ -33,7 +33,7 @@ export class LoginComponent {
       this.authService.login(this.userName, this.password).subscribe(
         data => {
           this.tokenStorage.saveToken(data.token);
-          this.tokenStorage.saveUser(data);
+          this.tokenStorage.saveUser(this.tokenStorage.getDecodedToken());
           this.router.navigateByUrl('/home');
         },
         err => {

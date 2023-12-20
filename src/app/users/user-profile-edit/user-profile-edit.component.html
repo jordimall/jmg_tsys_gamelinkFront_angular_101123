@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <div class="row justify-content-center align-items-center mt-3">
+        @if (user!==undefined) {
+        <div class="card w-50">
+        <div class="card-body text-center">
+            <h1 class="card-title">Profile config</h1>
+            <div class="row mt-5 mb-2 align-items-center justify-content-center text-start">
+                <div class="col">
+                    <p class="card-text">
+                        New username:
+                    </p>
+                </div>
+                <div class="col ">
+                    <input type="text" name="username" id="username" [(ngModel)]="username">
+                </div>
+            </div>
+            <div class="row mb-2 align-items-center justify-content-center text-start">
+                <div class="col">
+                    <p class="card-text">
+                        New email:
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="card-text">
+                        <input type="text" name="email" id="email" [(ngModel)]="email">
+                    </p>
+                </div>
+            </div>
+            <div class="row mb-2 align-items-center justify-content-center text-start">
+                <div class="col">
+                    <p class="card-text">
+                        New password:
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="card-text">
+                        <input type="text" name="password" id="password" [(ngModel)]="password">
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <button class="btn btn-primary rounded-pill btn-color w-75" type="button" (click)="save()">Save</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        }
+    </div>
+    </div>
