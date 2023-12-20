@@ -10,7 +10,7 @@ import {
 import { Location } from '@angular/common';
 import { Tag } from '../../models/tag.model';
 import { TagService } from '../../services/tag.service';
-import { MessageService } from '../../services/message.service';
+import { InfoMessageService } from '../../services/info-message.service';
 
 @Component({
   selector: 'app-create-edit-tag',
@@ -31,7 +31,7 @@ export class CreateEditTagComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private tagService: TagService,
-    private messageService: MessageService
+    private messageService: InfoMessageService
   ) {}
 
   ngOnInit(): void {

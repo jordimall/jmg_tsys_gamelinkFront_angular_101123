@@ -1,20 +1,20 @@
-#create_party_form_container {
+#update_party_form_container {
     flex-direction: column;
     padding: 20px;
 }
 
-#create_party_form_container p {
+#update_party_form_container p {
     margin: 0;
     padding: 0;
 }
 
-#create_party_role_selection_row {
+#update_party_role_selection_row {
     flex-wrap: nowrap;
     height: 80px;
     align-items: center;
 }
 
-.create_party_role_img {
+.update_party_role_img {
     width: 55px;
     height: 40px;
     border-radius: 40px;
@@ -23,17 +23,17 @@
     margin-right: 5px;
 }
 
-.create_party_role_img_selected {
+.update_party_role_img_selected {
     background-color: greenyellow;
 
 }   
 
-.create_party_role_quantity_selector_row {
+.update_party_role_quantity_selector_row {
     margin-bottom: 10px;
     margin-top: 20px;
 }
 
-.create_party_err {
+.update_party_err {
     color: rgb(197, 0, 0);
     margin: 0;
 }
@@ -42,12 +42,12 @@
     position: relative;
 }
 
-#create_party_role_err {
+#update_party_role_err {
     position: absolute;
     top: 65px
 }
 
-#create_party_btn {
+#update_party_btn {
     margin-top: 30px;
 }
 

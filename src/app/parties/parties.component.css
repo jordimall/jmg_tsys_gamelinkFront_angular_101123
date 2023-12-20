@@ -1,5 +1,6 @@
 #my_parties_container {
     height: 80vh;
+    min-height: 650px;
     background-color: rgb(158, 158, 158);
 }
 
@@ -20,6 +21,11 @@
     height: 40px;
     padding-top: 10px;
     font-weight: bold;
+}
+
+.my_parties_nav_no_selected:hover {
+    cursor: pointer;
+    background-color: rgb(131, 131, 131);
 }
 
 .my_parties_nav_no_selected {

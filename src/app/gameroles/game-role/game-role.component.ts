@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { GameRole } from '../../models/game-role.model';
 import { GameRoleService } from '../../services/game-role.service';
-import { MessageService } from './../../services/message.service';
+import { InfoMessageService } from '../../services/info-message.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class GameRoleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private gameRoleService: GameRoleService,
-    private messageService: MessageService,
+    private messageService: InfoMessageService,
     private tokenService: TokenStorageService
   ) {}
 

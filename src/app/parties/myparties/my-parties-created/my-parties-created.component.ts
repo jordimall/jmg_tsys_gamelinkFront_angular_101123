@@ -21,6 +21,29 @@ export class MyPartiesCreatedComponent implements OnInit{
   }
 
   ngOnInit(){
+    this.getAllOwnedParties();
+
+    //Apply the styles
+    (<HTMLElement> document.getElementById('my_parties_nav_created')).classList.remove("my_parties_nav_no_selected");
+    (<HTMLElement> document.getElementById('my_parties_nav_joined')).classList.add("my_parties_nav_no_selected");
+  }
+
+  onEditClick = (e: Event, id: number | undefined): void => {
+    this.route.navigateByUrl('edit-party/'+id);
+  }
+
+  onDeleteClick = (e: Event, id: number | undefined): void => {
+    this.partyService.deleteOwnParty(id as number).subscribe(
+      result => {
+        this.getAllOwnedParties();
+      },
+      error => {
+        this.route.navigateByUrl("/404");
+      }
+    );
+  }
+
+  getAllOwnedParties = (): void => {
     this.partyService.getOwnParties().subscribe(
       result => {
         this.parties = result.content;
@@ -29,9 +52,5 @@ export class MyPartiesCreatedComponent implements OnInit{
         this.route.navigateByUrl("/404");
       }
     );
-  }
-
-  onEditClick = (e: Event, id: number | undefined): void => {
-    this.route.navigateByUrl('edit-party/'+id);
   }
 }

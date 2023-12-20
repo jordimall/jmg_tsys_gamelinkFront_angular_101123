@@ -10,7 +10,7 @@ import {
 import { Location } from '@angular/common';
 import { GameRole } from '../../models/game-role.model';
 import { GameRoleService } from '../../services/game-role.service';
-import { MessageService } from '../../services/message.service';
+import { InfoMessageService } from '../../services/info-message.service';
 @Component({
   selector: 'app-create-edit-game-role',
   standalone: true,
@@ -34,7 +34,7 @@ export class CreateEditGameRoleComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private gameRoleService: GameRoleService,
-    private messageService: MessageService
+    private messageService: InfoMessageService
   ) {}
 
   ngOnInit(): void {
