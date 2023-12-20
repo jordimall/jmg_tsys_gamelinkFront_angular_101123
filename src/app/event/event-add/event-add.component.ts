@@ -38,7 +38,7 @@ export class EventAddComponent implements OnInit {
       { value: this.event.end, disabled: true },
       Validators.required
     ),
-    id_game: new FormControl('' ?? this.event.idGame, Validators.required),
+    idGame: new FormControl('' ?? this.event.idGame, Validators.required),
   });
 
   constructor(

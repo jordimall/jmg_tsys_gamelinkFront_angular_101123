@@ -77,8 +77,8 @@
                 }
               </select>
             </div>
-            @if (gameRoleForm.get('gameGameRole')?.hasError('required')&&
-            gameRoleForm.get('gameGameRole')?.touched) {
+            @if (gameRoleForm.get('games')?.hasError('required')&&
+            gameRoleForm.get('games')?.touched) {
             <span class="text-danger">You must select at least one game</span>
             }
           </div>
