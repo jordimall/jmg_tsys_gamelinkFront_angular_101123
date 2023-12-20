@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+<div class="text-center">
+    <h1>Edit party</h1>
+</div>
+<div class="container d-flex col-11 col-md-10 col-lg-6 border border-dark-subtle bg-white mt-2" id="update_party_form_container">
+    <div class="row ">
+        <p class="form-label">Name:</p>
+    </div>
+    <div class="row ">
+        <input type="text" name="" id="" class="form-control" id="update_party_name">
+        <p hidden id="update_party_name_err" class="update_party_err">Enter the name of the party</p>
+    </div>
+    <div class="row ">
+        <p class="form-label">Description:</p>
+    </div>
+    <div class="row ">
+        <textarea name="" id=""  rows="3" class="form-control" id="update_party_description"></textarea>
+        <p hidden id="update_party_description_err" class="update_party_err">Write a description for the party</p>
+    </div>
+    <div class="row " id="roles_row">
+        <div class="row d-flex" id="update_party_role_selection_row">
+            <p class="col-1">Roles: </p>
+            @for (role of gameRoles; track $index) {
+                <img src="{{role.icon_url}}" alt="{{role.name}}" id="role_icon_{{role.id}}" class="update_party_role_img" (click)="onRoleClick($event, role)">
+            }
+        </div>
+        <p hidden id="update_party_role_err" class="update_party_err">Select at least one role</p>
+    </div>
+
+    @for (role of gameRolesInputElements; track $index) {  
+        <div class="row  update_party_role_quantity_selector_row">
+            <p class="col-2 form-label">{{role.name}}</p>
+            <input class="col-4 form-control update_party_role_quantity" id="input_game_role_quantity_{{role.id}}" type="number" name="" id="" min="1" value="{{gameRolesQuantities[$index]}}">
+        </div>
+    } @empty {
+    }
+
+    <div class="row">
+        <button class="col-1 btn btn-primary" (click)="onUpdateClick($event)" id="update_party_btn">Update</button>
+    </div>
+</div>

@@ -122,6 +122,7 @@ export class CreatePartyComponent implements OnInit{
   //Validate the values recovered from the form
   validator = (partyName: string, partyDescription: string, rolesQuantities: any): boolean => {
     let validValues: boolean = true;
+    let validRoles: boolean = true;
     if(partyName == ""){
       validValues = false;
       (<HTMLInputElement> document.getElementById('create_party_name_err')).hidden = false;
@@ -140,7 +141,17 @@ export class CreatePartyComponent implements OnInit{
       validValues = false;
       (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = false;
     } else {
-      (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = true;
+
+      for(let i = 0; i < rolesQuantities.length; i++){
+        if((<HTMLInputElement>rolesQuantities[i]).value as unknown as number < 1){
+          validRoles = false;
+          (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = false;
+        }
+      }
+      
+      if (validRoles){
+        (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = true;
+      }
     }
     return validValues;
   }

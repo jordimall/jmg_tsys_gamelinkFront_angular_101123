@@ -1,1 +1,12 @@
-<p>my-parties-created works!</p>
+<div class="container" id="own_parties_list">
+    @for (party of parties; track $index) {
+        <div class="own_parties_list_item row d-flex justify-content-between">
+            <p class="col-2">{{party.name}}</p>
+            <p class="col-5">{{party.description}}</p>
+            <div class="col-2">
+                <button class="btn col-4 own_parties_list_edit" (click)="onEditClick($event, party.id)"><span class="material-symbols-outlined">Edit</span></button>
+                <button class="btn col-4 own_parties_list_delete" (click)="onDeleteClick($event, party.id)"><span class="material-symbols-outlined">Delete</span></button>
+            </div>
+        </div>
+    }
+</div>

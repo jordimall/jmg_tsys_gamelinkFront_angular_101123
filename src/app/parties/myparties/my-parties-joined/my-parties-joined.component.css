@@ -1,0 +1,84 @@
+#joiner_parties_component_row {
+    padding-top: 20px;
+    height: 80vh;
+    min-height: 650px;
+}
+
+#joiner_parties_component_row p {
+    margin: 0;
+}
+
+#joined_parties_list {
+    background-color: #636363;
+    height: 75vh;
+    min-height: 630px;
+    padding: 0;
+}
+
+#joined_parties_messages_view {
+    height: 75vh;
+    padding: 0;
+    min-height: 630px;
+}
+
+#joined_parties_messages_header {
+    height: 55px;
+    background-color: chocolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#joined_parties_messages {
+    height: 64vh;
+    min-height: 528px;
+    background-color: rgb(160, 214, 53);
+    padding: 10px;
+}
+
+#joined_parties_messages_footer {
+    height: 47px;
+    background-color: blueviolet;
+    display: flex;
+}
+
+.joined_parties_list_item {
+    background-color: #7c7c7c;
+    padding: 10px;
+    border-bottom: 1px solid #acb5c2;
+    color: white;
+}
+
+.joined_parties_list_item:hover {
+    background-color: #0B5ED7;
+}
+
+#joined_parties_messages_footer_send_button {
+    width: 50px;
+    padding: 0;
+    padding-left: 5px;
+}
+
+#joined_parties_messages_footer_send_button img {
+    height: 30px;
+}
+
+.foreign_message, .own_message {
+    color: white;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.foreign_message {
+    background-color: gray;
+}
+
+.own_message {
+    background-color: darkcyan;
+}
+
+.message_date {
+    font-size: 9px;
+}
