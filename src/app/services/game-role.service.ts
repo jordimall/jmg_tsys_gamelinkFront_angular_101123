@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameRole } from '../models/game-role.model';
 
-const baseUrl =
-  'https://ajo-tsys-gamelink-spring-1011-production.up.railway.app/game_role';
+const baseUrl = 'https://ajo-tsys-gamelink-spring-1011-production.up.railway.app/game_role';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -35,6 +35,6 @@ export class GameRoleService {
   };
 
   getAllGameRoleByGame = (id: number | undefined): Observable<any> => {
-    return this.http.get<any>(`${baseURL}/all?idGame=${id}`);
+    return this.http.get<any>(`${baseUrl}/all?idGame=${id}`);
   }
 }
