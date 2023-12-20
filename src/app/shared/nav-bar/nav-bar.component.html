@@ -20,16 +20,6 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/games']"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Games
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
             [routerLink]="['/my-parties']"
             routerLinkActive="active"
             ariaCurrentWhenActive="page"
@@ -45,17 +35,6 @@
             ariaCurrentWhenActive="page"
           >
             Events
-          </a>
-        </li>
-        @if (isUserAdmin()) {
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/users']"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Users
           </a>
         </li>
         <li class="nav-item">
@@ -78,6 +57,27 @@
             Game Role
           </a>
         </li>
+        @if (isUserAdmin()) {
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/users']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Users
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/games']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Games
+          </a>
+        </li>
         }
       </ul>
       <ul class="navbar-nav">
@@ -94,7 +94,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" [routerLink]="['/userProfile/:idUser']">
+              <a class="dropdown-item" [routerLink]="['/userProfile']">
                 Profile
               </a>
             </li>

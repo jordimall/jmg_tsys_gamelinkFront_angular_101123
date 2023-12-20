@@ -1,1 +1,59 @@
-<p>game works!</p>
+<div class="container">
+  @if (gameList!==null) {
+  <div class="row mt-5">
+    <div class="col">
+      <a class="btn btn-primary" [routerLink]="['./create']">New game</a>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    @for (game of gameList; track $index) {
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 me-2 d-flex justify-content-center align-items-center">
+      <a [routerLink]="['./show', game.id]">
+        <img [src]="game.thumbnailUrl" [alt]="game.title" class=" img-max" />
+      </a>
+    </div>
+    }
+    <nav
+      aria-label="Page navigation example"
+      class="d-flex justify-content-center mt-2"
+    >
+      <ul class="pagination">
+        @if (first) {
+        <li class="page-item disabled">
+          <button class="page-link">Previous</button>
+        </li>
+        }@else {
+        <li class="page-item">
+          <button class="page-link" (click)="decrementNumPage()">
+            Previous
+          </button>
+        </li>
+        } @for (item of arrayNumber; track $index) { @if($index===actualPage){
+        <li class="page-item active" aria-current="page">
+          <button class="page-link" (click)="modifyNumPage($index)">
+            {{ $index + 1 }}
+          </button>
+        </li>
+        } @else {
+        <li class="page-item activate">
+          <button class="page-link" (click)="modifyNumPage($index)">
+            {{ $index + 1 }}
+          </button>
+        </li>
+        } } @if(last){
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Next</a>
+        </li>
+        }@else {
+        <li class="page-item">
+          <button class="page-link" (click)="incrementNumPage()">Next</button>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+
+  }@else {
+  <div class="row"><mat-spinner></mat-spinner></div>
+  }
+</div>

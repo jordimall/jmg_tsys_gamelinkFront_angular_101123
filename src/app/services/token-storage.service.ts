@@ -35,7 +35,7 @@ export class TokenStorageService {
 
     return {};
   }
-
+  
   public getDecodedToken(): any {
     return jwtDecode(this.getToken() as string);
   }

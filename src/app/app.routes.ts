@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list/event-list.component';
 import { EventShowComponent } from './event/event-show/event-show.component';
@@ -27,6 +28,11 @@ import { CreateEditGameRoleComponent } from './gameroles/create-edit-game-role/c
 import { NotFoundComponent } from './not-found/not-found.component';
 import { loggedInGuard } from './guards/logged-in.guard';
 import { EditPartyComponent } from './parties/edit-party/edit-party.component';
+import { GameShowComponent } from './games/game-show/game-show.component';
+import { isAdminGuard } from './guards/is-admin.guard';
+import { canManageEventsGuard } from './guards/can-manage-events.guard';
+import { UserProfileEditComponent } from './users/user-profile-edit/user-profile-edit.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -42,8 +48,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: GamesComponent,
-    canActivate: [loggedInGuard]
+    component: HomeComponent,
+    canActivate: [loggedInGuard],
   },
   {
     path: 'event',
@@ -52,24 +58,24 @@ export const routes: Routes = [
     children: [
       { path: '', component: EventListComponent },
       { path: 'show/:id', component: EventShowComponent },
-      { path: 'new', component: EventAddComponent },
-      { path: 'edit/:id', component: EventEditComponent },
+      { path: 'new', component: EventAddComponent, canActivate: [canManageEventsGuard] },
+      { path: 'edit/:id', component: EventEditComponent, canActivate: [canManageEventsGuard] },
     ],
   },
   {
     path: 'parties/:idGame',
     component: ListPartyComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
-    path: 'party-details/:idParty',
+    path: 'partyDetails/:idParty',
     component: PartyDetailsComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
-    path: 'create-party/:idParty',
+    path: 'createParty',
     component: CreatePartyComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
     path: 'edit-party/:idParty',
@@ -87,23 +93,28 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'userProfile/:idUser',
-    component: UserProfileComponent,
-    canActivate: [loggedInGuard]
+    path: 'userProfile',
+    canActivate: [loggedInGuard],
+    children: [
+      { path: '', component: UserProfileComponent },
+      { path: 'edit', component: UserProfileEditComponent }
+    ]
   },
   {
     path: 'users',
     component: UsersComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard, isAdminGuard]
   },
   {
     path: 'games',
     component: GamesComponent,
     canActivate: [loggedInGuard],
-    children:[
-      { path:':idGame', component: GameComponent},
-      { path:'create', component: CreateEditGameComponent},
-      { path:'edit/:idGame', component: CreateEditGameComponent}
+    children: [
+      { path: '', component: GameComponent },
+      { path: 'show/:idGame', component: GameShowComponent },
+      { path: 'create', component: CreateEditGameComponent },
+      { path: 'edit/:idGame', component: CreateEditGameComponent },
+
     ],
   },
   {
@@ -112,8 +123,8 @@ export const routes: Routes = [
     canActivate: [loggedInGuard],
     children: [
       { path: '', component: TagComponent },
-      { path: 'create', component: CreateEditTagComponent },
-      { path: 'edit/:idTag', component: CreateEditTagComponent },
+      { path: 'create', component: CreateEditTagComponent, canActivate: [isAdminGuard] },
+      { path: 'edit/:idTag', component: CreateEditTagComponent, canActivate: [isAdminGuard] },
     ],
   },
   {
@@ -122,12 +133,12 @@ export const routes: Routes = [
     canActivate: [loggedInGuard],
     children: [
       { path: '', component: GameRoleComponent },
-      { path: 'create', component: CreateEditGameRoleComponent },
-      { path: 'edit/:idGameRole', component: CreateEditGameRoleComponent }
+      { path: 'create', component: CreateEditGameRoleComponent, canActivate: [isAdminGuard] },
+      { path: 'edit/:idGameRole', component: CreateEditGameRoleComponent, canActivate: [isAdminGuard] }
     ],
   },
   {
     path: '404',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
