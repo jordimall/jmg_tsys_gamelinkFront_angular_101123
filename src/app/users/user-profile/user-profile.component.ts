@@ -21,7 +21,6 @@ export class UserProfileComponent {
     .subscribe(
       data => {
         this.user = data;
-        console.log(this.user);
       },
       error => {
         console.log(error);
