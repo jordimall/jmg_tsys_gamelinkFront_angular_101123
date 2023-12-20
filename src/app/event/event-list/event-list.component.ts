@@ -85,7 +85,6 @@ export class EventListComponent implements OnInit {
           (res: any) => {
             const { totalPages, content, number, first, last, size } = res;
             this.eventList = content;
-            console.log(this.eventList);
             this.totalPage = totalPages;
             this.actualPage = number;
             this.size = size;
