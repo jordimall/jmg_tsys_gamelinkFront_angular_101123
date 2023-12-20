@@ -1,0 +1,26 @@
+#own_parties_list {
+    margin: 0;
+    padding-top: 10px
+}
+
+.own_parties_list_item p {
+    margin: 0;
+}
+
+.own_parties_list_item {
+    height: 100px;
+    background-color: rgb(119, 119, 119);
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.own_parties_list_delete {
+    margin-left: 20px;
+}
+
+.own_parties_list_delete, .own_parties_list_edit {
+    padding-left: 10px;
+    padding-top: 10px;
+}

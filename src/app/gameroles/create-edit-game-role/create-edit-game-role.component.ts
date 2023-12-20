@@ -11,11 +11,12 @@ import { Location } from '@angular/common';
 import { GameRole } from '../../models/game-role.model';
 import { Game } from '../../models/game.model';
 import { GameRoleService } from '../../services/game-role.service';
+import { InfoMessageService } from '../../services/info-message.service';
 import { GameService } from '../../services/game.service';
-import { MessageService } from '../../services/message.service';
 import arrayNotEmpty from './validator-form-control';
 import { GameGameRole } from '../../models/game-game-role.model';
 import { GameGameRoleService } from '../../services/game-game-role.service';
+
 @Component({
   selector: 'app-create-edit-game-role',
   standalone: true,
@@ -48,9 +49,9 @@ export class CreateEditGameRoleComponent implements OnInit {
     private router: Router,
     private location: Location,
     private gameRoleService: GameRoleService,
+    private messageService: InfoMessageService,
     private gameService: GameService,
     private gameGameRoleService: GameGameRoleService,
-    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {

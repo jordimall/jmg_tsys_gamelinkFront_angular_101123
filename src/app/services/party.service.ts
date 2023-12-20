@@ -19,12 +19,32 @@ export class PartyService {
     return this.http.get<any>(baseURL+'/all?idGame='+(id as unknown as string));
   };
 
+  getOwnParties = (): Observable<any> => {
+    return this.http.get<any>(baseURL+'/own');
+  };
+
+  getOwnPartyById = (id: number): Observable<Party> => {
+    return this.http.get<Party>(baseURL+'/own/id/'+id);
+  };
+
+  updateOwnParty = (data: Party): Observable<Party> => {
+    return this.http.put<Party>(baseURL+"/own/update/"+data.id, data);
+  }
+
+  deleteOwnParty = (id: number): Observable<any> => {
+    return this.http.delete<Party>(baseURL+"/own/delete/"+id);
+  }
+
   getOnePartyById = (id: number): Observable<Party> => {
     return this.http.get<Party>(baseURL+'/id/'+id);
   }
 
   getMembers = (id: number | undefined): Observable<UserPartyGameRole[]> => {
     return this.http.get<UserPartyGameRole[]>(baseURL+"/members/"+id);
+  }
+
+  getJoinedParties = (): Observable<Party[]> => {
+    return this.http.get<Party[]>(baseURL+"/joined");
   }
 
   createParty = (data: Party): Observable<Party> => {
