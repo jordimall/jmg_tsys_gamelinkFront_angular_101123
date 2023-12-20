@@ -4,7 +4,8 @@
   >
     <div class="col-6 text-center">
       <h1>
-        @if (findOutId()) {Edit to {{ gameRoleForm.value.name }}} @else {Create tag}
+        @if (findOutId()) {Edit to {{ gameRoleForm.value.name }}} @else {Create
+        role}
       </h1>
     </div>
     <div
@@ -29,7 +30,7 @@
           <div class="d-flex justify-content-between">
             @if (gameRoleForm.get('description')?.hasError('required')&&
             gameRoleForm.get('description')?.touched) {
-            <span class="text-danger"> Write a description for the role </span>
+            <span class="text-danger">Write a description for the role </span>
             }
           </div>
         </div>
@@ -40,6 +41,47 @@
           gameRoleForm.get('icon_url')?.touched) {
           <span class="text-danger">Enter the URL of the icon</span>
           }
+        </div>
+        <div class="mb-3">
+          <div class="row">
+            <div class="col form-group">
+              <label for="games" class="form-label">Games</label>
+              <select
+                id="games"
+                class="form-control"
+                formControlName="games"
+                (click)="onGameSelect()"
+                multiple
+              >
+                @for (game of games; track $index) {
+                <option [value]="game.id">
+                  {{ game.title }}
+                </option>
+                }
+              </select>
+            </div>
+
+            <div class="col form-group">
+              <label for="" class="form-label">Select games</label>
+              <select
+                id="selectedGames"
+                class="form-control"
+                formControlName="gameGameRole"
+                (click)="onGameDeselect()"
+                multiple
+              >
+                @for (game of selectedGames; track $index) {
+                <option [value]="game.id">
+                  {{ game.title }}
+                </option>
+                }
+              </select>
+            </div>
+            @if (gameRoleForm.get('gameGameRole')?.hasError('required')&&
+            gameRoleForm.get('gameGameRole')?.touched) {
+            <span class="text-danger">You must select at least one game</span>
+            }
+          </div>
         </div>
         <button
           [disabled]="!gameRoleForm.valid"

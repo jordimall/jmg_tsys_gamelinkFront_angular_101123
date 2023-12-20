@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 import { EventComponent } from './event/event.component';
 import { EventListComponent } from './event/event-list/event-list.component';
 import { EventShowComponent } from './event/event-show/event-show.component';
@@ -26,9 +27,13 @@ import { GameRoleComponent } from './gameroles/game-role/game-role.component';
 import { CreateEditGameRoleComponent } from './gameroles/create-edit-game-role/create-edit-game-role.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { loggedInGuard } from './guards/logged-in.guard';
+
+import { GameShowComponent } from './games/game-show/game-show.component';
+
 import { isAdminGuard } from './guards/is-admin.guard';
 import { canManageEventsGuard } from './guards/can-manage-events.guard';
 import { UserProfileEditComponent } from './users/user-profile-edit/user-profile-edit.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -44,8 +49,8 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: GamesComponent,
-    canActivate: [loggedInGuard]
+    component: HomeComponent,
+    canActivate: [loggedInGuard],
   },
   {
     path: 'event',
@@ -61,17 +66,17 @@ export const routes: Routes = [
   {
     path: 'parties/:idGame',
     component: ListPartyComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
-    path: 'party-details/:idParty',
+    path: 'partyDetails/:idParty',
     component: PartyDetailsComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
-    path: 'create-party/:idParty',
+    path: 'createParty',
     component: CreatePartyComponent,
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   {
     path: 'myParties',
@@ -100,10 +105,12 @@ export const routes: Routes = [
     path: 'games',
     component: GamesComponent,
     canActivate: [loggedInGuard],
-    children:[
-      { path:':idGame', component: GameComponent},
-      { path:'create', component: CreateEditGameComponent, canActivate: [isAdminGuard]},
-      { path:'edit/:idGame', component: CreateEditGameComponent, canActivate: [isAdminGuard]}
+    children: [
+      { path: '', component: GameComponent },
+      { path: 'show/:idGame', component: GameShowComponent },
+      { path: 'create', component: CreateEditGameComponent },
+      { path: 'edit/:idGame', component: CreateEditGameComponent },
+
     ],
   },
   {
@@ -128,6 +135,6 @@ export const routes: Routes = [
   },
   {
     path: '404',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
