@@ -14,7 +14,7 @@ export class GameGameRoleService {
 
   gameByGameRole = (id: number): Observable<GameGameRole[]> => {
     return this.http.get<GameGameRole[]>(
-      `${baseURL}/idGameRole/${id}`
+      `${baseURL}/allByIdGameRole/${id}`
     );
   };
 }

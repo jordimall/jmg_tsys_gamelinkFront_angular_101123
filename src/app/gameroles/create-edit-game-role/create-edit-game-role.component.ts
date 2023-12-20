@@ -39,8 +39,7 @@ export class CreateEditGameRoleComponent implements OnInit {
     icon_url: new FormControl(this.gameRole.icon_url, Validators.required),
     games: new FormControl(''),
     gameGameRole: new FormControl(
-      this.selectedGames || [],
-      arrayNotEmpty(this.control)
+      this.selectedGames || []
     ),
   });
 
@@ -60,6 +59,7 @@ export class CreateEditGameRoleComponent implements OnInit {
     if (this.findOutId()) {
       this.gameRoleService.getGameRole(this.id).subscribe(
         (data) => {
+          this.gameRole = data;
           this.gameRoleForm.patchValue({
             name: data.name,
             description: data.description,
@@ -83,6 +83,7 @@ export class CreateEditGameRoleComponent implements OnInit {
         this.gameRoleForm.patchValue({
           gameGameRole: this.selectedGames,
         });
+        console.log(this.gameRoleForm.value.gameGameRole);
       });
     }
 
@@ -135,7 +136,10 @@ export class CreateEditGameRoleComponent implements OnInit {
     const gameId = this.gameRoleForm.value.games[0];
     if (gameId) {
       const game = this.games.find((game) => game.id === gameId);
-      if (game && !this.selectedGames.includes(game)) {
+      const gameIndex = this.selectedGames.findIndex(
+        (game) => game.id === gameId
+      );
+      if (game && gameIndex === -1) {
         this.gameRole.gameGameRole?.push({ idGame: game });
         this.selectedGames.push(game);
       }
@@ -143,7 +147,7 @@ export class CreateEditGameRoleComponent implements OnInit {
   };
 
   public onGameDeselect = () => {
-    const gameId = this.gameRoleForm.value.games[0];
+    const gameId = this.gameRoleForm.value.gameGameRole[0];
     if (gameId) {
       const gameIndex = this.selectedGames.findIndex(
         (game) => game.id === gameId
