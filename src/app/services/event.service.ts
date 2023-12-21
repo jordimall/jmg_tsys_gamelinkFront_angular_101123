@@ -23,7 +23,6 @@ export class EventService {
   };
 
   addEvent = (data: Event): Observable<any> => {
-    console.log(data)
     return this.http.post(`${baseURL}/add`, data);
   };
 

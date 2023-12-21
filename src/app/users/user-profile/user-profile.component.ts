@@ -23,7 +23,6 @@ export class UserProfileComponent {
         this.user = data;
       },
       error => {
-        console.log(error);
       }
     )
   }

@@ -85,7 +85,6 @@ export class CreateEditGameRoleComponent implements OnInit {
         this.gameRoleForm.patchValue({
           gameGameRole: this.selectedGames,
         });
-        console.log(this.gameRoleForm.value.gameGameRole);
       });
     }
 
@@ -111,7 +110,6 @@ export class CreateEditGameRoleComponent implements OnInit {
       gameGameRole.idGame = this.selectedGames[index];
       newGameRole.gameGameRole.push(gameGameRole);
     }
-    console.log(newGameRole)
     if (this.findOutId()) {
       this.gameRoleService.editGameRole(this.id, newGameRole).subscribe(
         (data) => {

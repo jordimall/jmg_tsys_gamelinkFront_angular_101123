@@ -1,54 +1,56 @@
 <app-nav-bar></app-nav-bar>
-<div class="container">
-<div class="row justify-content-center align-items-center mt-3">
-    @if (user!==undefined) {
-    <div class="card w-50">
-    <div class="card-body text-center">
-        <h1 class="card-title">Profile</h1>
-        <div class="row mt-5 mb-2 align-items-center justify-content-center text-start">
-            <div class="col">
-                <p class="card-text">
-                    Username:
-                </p>
+<div class="container py-5">
+    <div class="row d-flex justify-content-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+
+                <div class="md-5 md-4">
+
+                <h2 class="fw-bold mb-2 ">Profile</h2>
+                
+                <div class="row mt-5 mb-2 align-items-center justify-content-center text-start">
+                    <div class="col">
+                        <p class="card-text">
+                            Username:
+                        </p>
+                    </div>
+                    <div class="col ">
+                        <p class="card-text">
+                            {{user.userName}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-2 align-items-center justify-content-center text-start">
+                    <div class="col">
+                        <p class="card-text">
+                            Email:
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">
+                            {{user.email}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row mb-2 align-items-center justify-content-center text-start">
+                    <div class="col">
+                        <p class="card-text">
+                            Password:
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="card-text bg-secondary">
+                            <label for=""></label>
+                        </p>
+                    </div>
+                </div>
+
+                <button class="btn px-5 mt-4" type="submit" id="profile_edit_btn" routerLink ="edit">Edit profile</button>
             </div>
-            <div class="col ">
-                <p class="card-text">
-                    {{user.userName}}
-                </p>
             </div>
         </div>
-        <div class="row mb-2 align-items-center justify-content-center text-start">
-            <div class="col">
-                <p class="card-text">
-                    Email:
-                </p>
-            </div>
-            <div class="col">
-                <p class="card-text">
-                    {{user.email}}
-                </p>
-            </div>
-        </div>
-        <div class="row mb-2 align-items-center justify-content-center text-start">
-            <div class="col">
-                <p class="card-text">
-                    Password:
-                </p>
-            </div>
-            <div class="col">
-                <p class="card-text bg-dark">
-                    <label for=""></label>
-                </p>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col">
-                <button class="btn btn-primary rounded-pill btn-color w-75" type="button" routerLink ="edit">Edit profile</button>
-            </div>
         </div>
     </div>
-    </div>
-    }
-</div>
 </div>
 <router-outlet></router-outlet>

@@ -42,7 +42,6 @@ export class MyPartiesJoinedComponent implements OnInit{
 
     this.messageService.getAllMessagesByPartyId(this.selectedParty.id).subscribe(
       result => {
-        console.log(result);
         this.partyMessages = result.content;
       },
       error => {
@@ -60,16 +59,15 @@ export class MyPartiesJoinedComponent implements OnInit{
       result => {
         this.messageService.getAllMessagesByPartyId(this.selectedParty.id).subscribe(
           result => {
-            console.log(result);
             this.partyMessages = result.content;
           },
           error => {
-    
+
           }
         );
       },
       error => {
-        
+
       }
     );
   }
