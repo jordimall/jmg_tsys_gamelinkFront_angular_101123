@@ -5,12 +5,11 @@
 .list_parties_game_image {
     margin-top: 50px;
     max-height: 400px;
+    margin-bottom: 70px;
 }
 
-.parties_list {
-    height: 600px;
-    margin-left: 40px;
-    background-color: rgb(158, 158, 158);
+#parties_list {
+    margin-left: 30px;
 }
 
 .parties_list_item {
@@ -34,4 +33,26 @@
 
 .back_icon:hover {
     cursor: pointer;
+}
+
+#party_list_card_body {
+    max-height: 520px;
+    padding: 0;
+}
+
+.list-group-item {
+    height: 45px;
+}
+
+.list-group-item:hover {
+    background-color: #f042399f;
+}
+
+.null_party {
+    height: 0;
+    padding: 0;
+}
+
+#create_party_btn {
+    background-color: #73C264;
 }

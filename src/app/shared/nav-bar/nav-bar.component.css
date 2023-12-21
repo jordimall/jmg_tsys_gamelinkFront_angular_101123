@@ -1,0 +1,17 @@
+nav a {
+    color: white;
+    transition: color 0.2s
+}
+
+nav a:hover {
+    color: #F04339;
+}
+
+#nav_logo {
+    width: 40px;
+}
+
+.active {
+    
+    color: #F04339!important;
+}
