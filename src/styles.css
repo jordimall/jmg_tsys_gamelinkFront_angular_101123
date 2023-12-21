@@ -32,8 +32,8 @@ body.night-mode {
   font-family: 'Open Sans', sans-serif;
 }
 
-html, body { 
-  height: 100%; 
+html, body {
+  height: 100%;
   background-color: rgb(134, 134, 134);
 }
 body { 
