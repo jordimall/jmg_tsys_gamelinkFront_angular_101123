@@ -1,56 +1,68 @@
 <app-nav-bar></app-nav-bar>
+
 <div class="container" id="list_parties_main_container">
-    <div class="row">
-        <div class="col-1 offset-3">
-            <img src="../../../assets/arrow-left.svg" alt="" class="back_icon" routerLink="/parties/{{game.id}}">
-        </div>
-    </div>
+    <div class="row"><div class="col-1 offset-3"><img src="../../../assets/arrow-left.svg" alt="" class="back_icon" routerLink="/parties/{{game.id}}"></div></div>
     <div class="row">
         <img src="{{game.thumbnailUrl}}" alt="" class="col-7 offset-2 col-sm-7 offset-sm-2 col-md-5 offset-md-4 col-lg-3 offset-lg-0 list_parties_game_image">
-        <div class="container col-10 col-md-12 col-lg-7" id="party_details_frame">
-            <div class=" row d-flex justify-content-between party_details_header">
-                <p class="col-6 " id="party_deatils_name">{{party.name}}</p>
-                <p class="col-1">{{membersCount}}/{{party.maxPlayers}}</p>
-            </div>
-            <div class="row party_details_header">
-                <p>{{party.description}}</p>
-            </div>
-            <div class="row d-flex overflow-auto" id="party_details_player_list">
-                @for (member of members; track $index) {
-                    <div class="d-flex justify-content-between align-items-center party_details_player_list_item">
-                        @if(member.user != null) {
-                            <p class="col-6">{{member.user?.userName}}</p>
-
-                        } @else {
-                            <p class="party_details_empty">empty</p>
+        <div class="col-xl-7" id="party_card_container">
+            <div class="card bg-dark text-white h-100">
+                <div class="d-flex card-header justify-content-between">
+                    <h5 class="me-3 mb-0 col-10">{{party.name}}</h5>
+                    <h5 class="me-3 mb-0 ">{{membersCount}}/{{party.maxPlayers}}</h5>
+                </div>
+                <div class="d-flex card-header justify-content-between">
+                    <h5 class="me-3 mb-0 col-10">{{party.description}}</h5>
+                </div>
+                <div class="card-body overflow-auto" id="party_list_card_body">
+                    <ul class="list-group list-group-flush text-white">
+                       
+                        @for (member of members; track $index) {
+                            <li class="list-group-item text-white">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        @if(member.user != null) {
+                                            <h6 class="col-6">{{member.user?.userName}}</h6>
+                
+                                        } @else {
+                                            <h6 class="party_details_empty">empty</h6>
+                                        }
+                                    </div>
+                                    <div class="flex-shrink-0 text-end">
+                                        <span>
+                                            <img src="{{member.gameRole?.icon_url}}" alt="" class="role_icon">
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
                         }
-                        <img src="{{member.gameRole?.icon_url}}" alt="" class="role_icon">
-                    </div>
-                }
+                    </ul>
+                </div>
+                <div class="bg-dark" id="party_details_footer">
+                    @if (emptyRoles.length > 0 && !isInParty) {
+                        <div clas="col-12">
+                            <select name="party_details_select_role" id="party_details_select_role">
+                                @for (role of emptyRoles; track $index) {
+                                    <option value="{{$index}}" class="party_details_option_role">
+                                        {{role.name}}
+                                    </option>
+                                
+                                }
+                            </select>
+                        </div>
+                    
+                        <div clas="col-12">
+                            <button class="btn text-white fw-bold" (click)="onJoinClick($event)" id="party_details_join_btn">Join</button>
+                        </div>
+                    } @else if (isInParty) {
+                        <div clas="col-12">
+                            <button class="btn text-white fw-bold" (click)="onLeaveClick($event)" id="party_details_leave_btn">Leave</button>
+                        </div>
+                    }
+                    
+                </div>
             </div>
-            <div class="row" id="party_details_footer">
-                @if (emptyRoles.length > 0 && !isInParty) {
-                    <div clas="col-12">
-                        <select name="party_details_select_role" id="party_details_select_role">
-                            @for (role of emptyRoles; track $index) {
-                                <option value="{{$index}}" class="party_details_option_role">
-                                    {{role.name}}
-                                </option>
-                            
-                            }
-                        </select>
-                    </div>
-                
-                    <div clas="col-12">
-                        <button class="btn btn-primary" (click)="onJoinClick($event)">Join</button>
-                    </div>
-                } @else if (isInParty) {
-                    <div clas="col-12">
-                        <button class="btn btn-danger" (click)="onLeaveClick($event)">Leave</button>
-                    </div>
-                }
-                
-            </div>
+            
         </div>
+        
     </div>
 </div>
