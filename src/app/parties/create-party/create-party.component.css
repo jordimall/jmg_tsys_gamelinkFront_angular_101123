@@ -24,7 +24,7 @@
 }
 
 .create_party_role_img_selected {
-    background-color: greenyellow;
+    background-color: #73C264;
 
 }   
 
@@ -34,7 +34,7 @@
 }
 
 .create_party_err {
-    color: rgb(197, 0, 0);
+    color: #ec6059;
     margin: 0;
 }
 
@@ -49,6 +49,8 @@
 
 #create_party_btn {
     margin-top: 30px;
+    background-color: #73C264;
+    border-color: #73C264;
 }
 
 
