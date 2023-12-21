@@ -47,6 +47,7 @@ export class MyPartiesCreatedComponent implements OnInit{
     this.partyService.getOwnParties().subscribe(
       result => {
         this.parties = result.content;
+        console.log(this.parties)
       },
       error => {
         this.route.navigateByUrl("/404");
