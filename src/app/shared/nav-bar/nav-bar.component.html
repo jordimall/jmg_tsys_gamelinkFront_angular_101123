@@ -37,6 +37,17 @@
             Events
           </a>
         </li>
+        @if (isUserAdmin()) {
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/users']"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Users
+          </a>
+        </li>
         <li class="nav-item">
           <a
             class="nav-link"
@@ -55,17 +66,6 @@
             ariaCurrentWhenActive="page"
           >
             Game Role
-          </a>
-        </li>
-        @if (isUserAdmin()) {
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/users']"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >
-            Users
           </a>
         </li>
         <li class="nav-item">
