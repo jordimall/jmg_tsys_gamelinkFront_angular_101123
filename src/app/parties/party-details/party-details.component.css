@@ -70,7 +70,9 @@
 }
 
 #party_details_footer {
-    margin-top: 20px;
+    padding-top: 20px;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 #party_details_footer div {
@@ -85,4 +87,35 @@
 
 #party_details_select_role {
     width: 150px;
+}
+
+.list-group-item {
+    border-color: #332D2D;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.list-group-item:has(.party_details_empty):hover {
+    border-color: #332D2D;
+}
+
+.list-group-item:hover {
+    border-color: #F04339;
+}
+
+#party_list_card_body {
+    height: 450px;
+    padding: 0;
+}
+
+#party_card_container {
+    margin-left: 30px;
+}
+
+#party_details_join_btn {
+    background-color: #73C264;
+}
+
+#party_details_leave_btn {
+    background-color: #F04339;
 }

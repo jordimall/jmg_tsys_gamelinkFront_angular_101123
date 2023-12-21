@@ -1,17 +1,20 @@
-.error{
-    color:rgb(170, 0, 0);
+label {
+    color: black;
 }
+
+#register_btn {
+    background-color: #F04339;
+    border-color: #F04339;
+}
+
+#sign_up_span {
+    color: #F04339;
+}
+
 .hidden{
     display: none;
 }
-.perfect-centering {
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-.btn-color{
-    color:white;
-    border-color: rgb(70, 212, 255);
-    background-color: rgb(70, 212, 255);
+
+.error{
+    color:rgb(170, 0, 0);
 }

@@ -2,7 +2,6 @@ import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@an
 import { Game } from '../../models/game.model';
 
 const arrayNotEmpty = (control: FormControl): any => {
-  console.log(control.value)
   if (control.value && control.value.length == 0) {
     return { arrayNotEmpty: true };
   }
@@ -16,7 +15,6 @@ const arrayNotEmpty2 = (array:Game[]): ValidatorFn  => {
   // return null;
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = array.length === 0;
-    console.log(forbidden)
     return forbidden ? {forbiddenName: {value: control.value}} : null;
   };
 };

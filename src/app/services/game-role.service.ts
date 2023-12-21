@@ -15,7 +15,6 @@ export class GameRoleService {
     numPage: number,
     size: number
   ): Observable<GameRole[]> => {
-    console.log(size)
     return this.http.get<any[]>(`${baseUrl}/all?page=${numPage}&size=${size}`);
   };
 

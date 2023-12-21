@@ -55,3 +55,7 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+#search_btn {
+  background-color: #73C264;
+}

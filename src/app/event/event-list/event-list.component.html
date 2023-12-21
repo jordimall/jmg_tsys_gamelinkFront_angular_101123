@@ -15,7 +15,7 @@
           <option [ngValue]="game.id">{{ game.title }}</option>
           }
         </select>
-        <button class="btn btn-outline-success" type="submit" [disabled]="!gameForm.valid">Search</button>
+        <button class="btn" type="submit" [disabled]="!gameForm.valid" id="search_btn">Search</button>
       </form>
     </div>
   </div>
@@ -33,12 +33,7 @@
           <div class="thumbnail-footer">
             <div class="row text-center g-0">
               <div class="col">
-                <p class="fs-75rem">Stard date:</p>
-                <p class="fs-75rem">{{ event.start }}</p>
-              </div>
-              <div class="col">
-                <p class="fs-75rem">End date:</p>
-                <p class="fs-75rem">{{ event.end }}</p>
+                <p class="fs-75rem">{{ event.status }}</p>
               </div>
             </div>
           </div>
