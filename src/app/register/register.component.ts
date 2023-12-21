@@ -56,11 +56,9 @@ export class RegisterComponent {
     if(this.validateRegister()){
       this.authService.register(this.userName, this.email, this.password).subscribe(
         (data)=> {
-          console.log(data);
           this.router.navigateByUrl('/login');
         },
         err => {
-          console.log(err.error.message);
         }
       )
     }

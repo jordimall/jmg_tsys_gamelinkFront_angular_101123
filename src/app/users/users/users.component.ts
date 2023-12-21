@@ -51,11 +51,10 @@ export class UsersComponent {
         this.initialArray(this.totalPage);
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
       }
     );
   }
-  
+
   deleteUser = (id: number) => {
     this.userService.deleteUser(id)
     .subscribe({
@@ -64,7 +63,6 @@ export class UsersComponent {
         this.ngOnInit();
       },
       error: error =>{
-        console.log(error)
       }
   });
   }

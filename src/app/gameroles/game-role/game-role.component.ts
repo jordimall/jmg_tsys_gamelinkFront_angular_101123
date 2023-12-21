@@ -63,14 +63,12 @@ export class GameRoleComponent implements OnInit {
   };
 
   deleteGameRole = (id: number): void => {
-    console.log(id);
     this.gameRoleService.deleteGameRole(id).subscribe(
       (data) => {
         this.messageService.setMessage('Tag successfully removed');
         this.ngOnInit();
       },
       (err) => {
-        console.log(err)
         this.router.navigateByUrl('/404');
       }
     );

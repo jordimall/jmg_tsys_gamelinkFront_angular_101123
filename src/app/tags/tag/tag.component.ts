@@ -55,7 +55,6 @@ export class TagComponent implements OnInit {
         this.initialArray(this.totalPage);
       },
       (err) => {
-        console.log({ status: err.status, message: err.message });
       }
     );
   }
@@ -67,7 +66,6 @@ export class TagComponent implements OnInit {
         this.ngOnInit();
       },
       (err: any) => {
-        console.log({ status: err.status, message: err.message });
       }
     );
   };
