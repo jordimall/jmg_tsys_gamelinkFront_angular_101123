@@ -25,11 +25,6 @@
     margin: 0;
 }
 
-.back_icon {
-    height: 30px;
-    margin-bottom: 5px;
-    margin-left: 30px;
-}
 
 .back_icon:hover {
     cursor: pointer;

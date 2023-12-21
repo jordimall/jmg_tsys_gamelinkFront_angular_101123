@@ -1,5 +1,4 @@
 #joiner_parties_component_row {
-    padding-top: 20px;
     height: 80vh;
     min-height: 650px;
 }
@@ -10,8 +9,10 @@
 
 #joined_parties_list {
     background-color: #636363;
-    height: 75vh;
-    min-height: 630px;
+    border-right: 1px solid #acb5c2;
+    height: 69vh;
+    margin-top: 55px;
+    min-height: 575px;
     padding: 0;
 }
 
@@ -23,7 +24,6 @@
 
 #joined_parties_messages_header {
     height: 55px;
-    background-color: chocolate;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,7 @@
 #joined_parties_messages {
     height: 64vh;
     min-height: 528px;
-    background-color: rgb(160, 214, 53);
+    background-color: gray;
     padding: 10px;
 }
 
@@ -48,16 +48,18 @@
     padding: 10px;
     border-bottom: 1px solid #acb5c2;
     color: white;
+    transition: background-color 0.2s;
 }
 
 .joined_parties_list_item:hover {
-    background-color: #0B5ED7;
+    background-color: #F04339;
 }
 
 #joined_parties_messages_footer_send_button {
     width: 50px;
     padding: 0;
     padding-left: 5px;
+    background-color: #73C264;
 }
 
 #joined_parties_messages_footer_send_button img {
@@ -72,11 +74,11 @@
 }
 
 .foreign_message {
-    background-color: gray;
+
 }
 
 .own_message {
-    background-color: darkcyan;
+    background-color: #73C264;
 }
 
 .message_date {

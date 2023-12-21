@@ -7,7 +7,7 @@
         }
     </div>
     <div class="col-9" id="joined_parties_messages_view">
-       <div class="" id="joined_parties_messages_header">
+       <div class="bg-dark text-white" id="joined_parties_messages_header">
             <p>{{selectedParty.name}}</p>
        </div>
        <div id="joined_parties_messages">
@@ -18,7 +18,7 @@
                     <span class="message_date">{{message.created_at}}</span>
                 </div>
             } @else {
-                <div class="col-9 foreign_message">
+                <div class="col-9 foreign_message bg-dark">
                     <span class="message_author">{{message.author?.userName}}</span>
                     <p>{{message.message}}</p>
                     <p class="message_date">{{message.created_at}}</p>
@@ -28,7 +28,7 @@
        </div>
        <div id="joined_parties_messages_footer">
             <input type="text" class="form-control" id="joined_parties_messages_footer_input">
-            <button class="btn btn-primary" id="joined_parties_messages_footer_send_button"><img src="../../../../assets/send_icon.png" (click)="onSendClick()"></button>
+            <button class="btn" id="joined_parties_messages_footer_send_button"><img src="../../../../assets/send_icon.png" (click)="onSendClick()"></button>
        </div>
     </div>
 </div>
