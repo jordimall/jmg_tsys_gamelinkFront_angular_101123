@@ -1,26 +1,72 @@
 #own_parties_list {
-    margin: 0;
-    padding-top: 10px
+  margin: 0;
+  padding-top: 10px;
 }
 
 .own_parties_list_item p {
-    margin: 0;
+  margin: 0;
 }
 
 .own_parties_list_item {
-    height: 100px;
-    background-color: rgb(119, 119, 119);
-    align-items: center;
-    text-decoration: none;
-    margin-bottom: 5px;
-    color: rgb(255, 255, 255);
+  height: 100px;
+  background-color: rgb(119, 119, 119);
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 5px;
+  color: rgb(255, 255, 255);
 }
 
 .own_parties_list_delete {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
-.own_parties_list_delete, .own_parties_list_edit {
-    padding-left: 10px;
-    padding-top: 10px;
+.own_parties_list_delete,
+.own_parties_list_edit {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.project-list-table {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.table-nowrap td,
+.table-nowrap th {
+  white-space: nowrap;
+}
+.table-borderless > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
+.table > :not(caption) > * > * {
+  padding: 0.75rem 0.75rem;
+  background-color: var(--bs-table-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.table{
+  --bs-table-bg:rgb(119, 119, 119)!important;
+}
+
+.h-10vh {
+  height: 8vh;
+}
+
+.font-size-2 {
+  font-size: 2rem;
+}
+
+.color_edit {
+  color: #73c264;
 }

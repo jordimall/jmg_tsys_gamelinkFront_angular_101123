@@ -1,12 +1,94 @@
 <div class="container" id="own_parties_list">
-    @for (party of parties; track $index) {
-        <div class="own_parties_list_item row d-flex justify-content-between">
-            <p class="col-2">{{party.name}}</p>
-            <p class="col-5">{{party.description}}</p>
-            <div class="col-2">
-                <button class="btn col-4 own_parties_list_edit" (click)="onEditClick($event, party.id)"><span class="material-symbols-outlined">Edit</span></button>
-                <button class="btn col-4 own_parties_list_delete" (click)="onDeleteClick($event, party.id)"><span class="material-symbols-outlined">Delete</span></button>
+  <div class="">
+    <table
+      class="table project-list-table table-nowrap align-middle table-borderless"
+    >
+      <tbody>
+        @for (party of parties; track $index) {
+        <tr class="h-10vh">
+          <td class="rounded-start text-white">{{ party.name }}</td>
+          <td class="text-white">{{ party.description }}</td>
+          <td class="text-white"></td>
+          <td class="rounded-end">
+            <ul class="list-inline mb-0 d-flex justify-content-end me-5">
+              <li class="list-inline-item">
+                <button
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Edit"
+                  class="px-2 color_edit"
+                  (click)="onEditClick($event, party.id)"
+                >
+                  <i class="bx bx-pencil font-size-2"></i>
+                </button>
+              </li>
+              <li class="list-inline-item">
+                <button
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Delete"
+                  class="px-2 text-danger"
+                  data-bs-toggle="modal"
+                  [attr.data-bs-target]="['#staticBackdrop' + party.id]"
+                >
+                  <i class="bx bx-trash-alt font-size-2"></i>
+                </button>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <div
+        class="modal fade"
+        id="staticBackdrop{{ party.id }}"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Surely you want to remove the following party
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
+            <div class="modal-body">
+              <div>
+                <p>Name: {{ party.name }}</p>
+              </div>
+              <div>
+                <p>Description: {{ party.description }}</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onDeleteClick($event, party.id)"
+                data-bs-dismiss="modal"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
-    }
+      </div>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
