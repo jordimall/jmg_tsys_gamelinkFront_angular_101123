@@ -8,7 +8,7 @@
         <tr class="h-10vh">
           <td class="rounded-start text-white">{{ party.name }}</td>
           <td class="text-white">{{ party.description }}</td>
-          <td class="text-white"></td>
+          <td class="text-white">{{ joinedMembers[$index]}}/{{party.userPartyGameRoles?.length}}</td>
           <td class="rounded-end">
             <ul class="list-inline mb-0 d-flex justify-content-end me-5">
               <li class="list-inline-item">
