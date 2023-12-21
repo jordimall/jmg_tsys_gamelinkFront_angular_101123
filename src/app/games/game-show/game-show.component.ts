@@ -21,7 +21,6 @@ export class GameShowComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('idGame');
-    console.log(this.id)
     if (this.id !== null) {
       this.gameService.gameById(this.id).subscribe(
         (data: any) => {

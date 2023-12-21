@@ -26,8 +26,8 @@ export class PartyDetailsComponent {
   membersCount: number = 0;
   isInParty: boolean = false;
 
-  constructor(private partyService: PartyService, 
-              private gameService: GameService, 
+  constructor(private partyService: PartyService,
+              private gameService: GameService,
               private tokenService: TokenStorageService,
               private route: Router){
 
@@ -46,7 +46,7 @@ export class PartyDetailsComponent {
           error => {
             this.route.navigateByUrl("/404");
           }
-          
+
         );
       },
       error => {
@@ -57,13 +57,12 @@ export class PartyDetailsComponent {
       result => {
         this.members = result;
         this.membersCount = 0;
-        
+
         this.countJoinedMembers();
         this.checkEmptyRoles();
 
         //Check if logged user is already in the party
         this.isInParty = this.alreadyInParty();
-        console.log(this.isInParty)
       },
       error => {
         this.route.navigateByUrl("/404");
@@ -84,8 +83,7 @@ export class PartyDetailsComponent {
       } else {
         index++;
       }
-    } 
-    console.log(this.members[index])
+    }
     this.partyService.joinParty(this.party.id, this.members[index].id).subscribe(
       result => {
         this.members = result;
@@ -103,7 +101,7 @@ export class PartyDetailsComponent {
   onLeaveClick = (e: Event): void => {
     let foundRole: boolean = false;
     let index: number = 0;
-    
+
     while(!foundRole && index < this.members.length) {
       if(this.members[index].user?.id == this.tokenService.getDecodedToken().id){
         foundRole = true;
@@ -125,7 +123,7 @@ export class PartyDetailsComponent {
 
       }
     );
-    
+
   }
 
   alreadyInParty = () : boolean => {
@@ -152,7 +150,7 @@ export class PartyDetailsComponent {
   }
 
   checkEmptyRoles = (): void => {
-    /*Count how many userParyGameRoles have user and counte them, otherwise 
+    /*Count how many userParyGameRoles have user and counte them, otherwise
     adds the role in emptyRoles array*/
     for(let i = 0; i < this.members.length; i++){
       if (this.emptyRoles.length > 0){

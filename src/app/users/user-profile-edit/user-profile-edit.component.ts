@@ -45,14 +45,12 @@ export class UserProfileEditComponent {
               this.router.navigateByUrl("userProfile");
             },
             err => {
-              console.log(err);
             }
           )
         },
         error => {
-          console.log(error)
         }
       )
-    
+
   }
 }

@@ -28,11 +28,9 @@ export class CreatePartyComponent implements OnInit{
   ngOnInit() {
     let url: string[] = this.route.url.split("/");
     this.gameId = url[url.length - 1] as unknown as number;
-    console.log(this.gameId)
     this.gameRoleService.getAllGameRoleByGame(this.gameId).subscribe(
       result => {
         this.gameRoles = result.content;
-        console.log(result.content)
       },
       error => {
         this.route.navigateByUrl("/404");
@@ -67,11 +65,11 @@ export class CreatePartyComponent implements OnInit{
       (<HTMLElement>e.target).classList.add('create_party_role_img_selected');
       element = document.createElement('div');
       this.gameRolesInputElements.push(role);
-      
+
     }
 
   }
-  
+
   //Recover the values from the form, creates a new party object and send it to the backEnd
   onCreateClick = (e: Event): void => {
     let party: Party = new Party;
@@ -100,23 +98,22 @@ export class CreatePartyComponent implements OnInit{
           party.userPartyGameRoles.push(userPartyGameRole);
         }
       }
-      
+
       //Assign the party's max players based on the ammount of roles and quantities introduced
       party.maxPlayers = totalRoleCount;
 
       this.partyService.createParty(party).subscribe(
         result => {
-          this.route.navigateByUrl('party-details/'+result.id);          
+          this.route.navigateByUrl('party-details/'+result.id);
         },
         error => {
 
         }
       );
-      console.log(party)
     }
 
 
-    
+
   }
 
   //Validate the values recovered from the form
@@ -148,7 +145,7 @@ export class CreatePartyComponent implements OnInit{
           (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = false;
         }
       }
-      
+
       if (validRoles){
         (<HTMLInputElement> document.getElementById('create_party_role_err')).hidden = true;
       }

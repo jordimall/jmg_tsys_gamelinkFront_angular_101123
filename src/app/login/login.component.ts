@@ -37,7 +37,6 @@ export class LoginComponent {
           this.router.navigateByUrl('/home');
         },
         err => {
-          console.log(err);
           document.getElementById("errorLogin")?.classList.remove("hidden");
         }
       )

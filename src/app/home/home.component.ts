@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     this.gameService.allGame().subscribe(
       (result) => {
         this.games = result;
-        console.log(this.games[0].thumbnailUrl);
       },
       (error) => {
         this.router.navigateByUrl('/404');

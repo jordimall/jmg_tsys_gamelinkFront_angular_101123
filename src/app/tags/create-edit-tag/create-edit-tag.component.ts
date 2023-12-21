@@ -46,7 +46,6 @@ export class CreateEditTagComponent implements OnInit {
           });
         },
         (err) => {
-          console.log({ status: err.status, messaje: err.message });
         }
       );
     }
@@ -61,7 +60,6 @@ export class CreateEditTagComponent implements OnInit {
           this.location.back();
         },
         (err) => {
-          console.log({ status: err.status, message: err.message });
         }
       );
     } else {
@@ -71,7 +69,6 @@ export class CreateEditTagComponent implements OnInit {
           this.location.back();
         },
         (err) => {
-          console.log({ status: err.status, message: err.message });
         }
       );
     }

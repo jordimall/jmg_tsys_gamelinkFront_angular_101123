@@ -41,7 +41,6 @@ export class EditPartyComponent implements OnInit{
         this.gameRoleService.getAllGameRoleByGame(gameId).subscribe(
           result => {
             this.gameRoles = result.content;
-            console.log(result.content)
 
             this.loadInUserPartyGameRoles(this.party);
           },
@@ -80,11 +79,11 @@ export class EditPartyComponent implements OnInit{
       (<HTMLElement>e.target).classList.add('update_party_role_img_selected');
       this.gameRolesInputElements.push(role);
       this.gameRolesQuantities.push(1);
-      
+
     }
 
   }
-  
+
   //Recover the values from the form, updates a new party object and send it to the backEnd
   onUpdateClick = (e: Event): void => {
     let party: Party = new Party;
@@ -103,7 +102,7 @@ export class EditPartyComponent implements OnInit{
       party.userPartyGameRoles = [];
       game.id = 1;
       party.game = game;
-      
+
       /*For every input value for game role read the quantity and generates a new UserPartyGameRole
         based on the quantity and add them to the party's userPartyGameRoles attribute*/
       for(let i = 0; i < this.gameRolesInputElements.length; i++){
@@ -114,13 +113,12 @@ export class EditPartyComponent implements OnInit{
           party.userPartyGameRoles.push(userPartyGameRole);
         }
       }
-      
+
       //Assign the party's max players based on the ammount of roles and quantities introduced
       party.maxPlayers = totalRoleCount;
       this.partyService.updateOwnParty(party).subscribe(
         result => {
-          console.log(result)
-          this.route.navigateByUrl('party-details/'+result.id);          
+          this.route.navigateByUrl('party-details/'+result.id);
         },
         error => {
 
@@ -129,7 +127,7 @@ export class EditPartyComponent implements OnInit{
     }
 
 
-    
+
   }
 
   //Validate the values recovered from the form
@@ -162,7 +160,7 @@ export class EditPartyComponent implements OnInit{
           (<HTMLInputElement> document.getElementById('update_party_role_err')).hidden = false;
         }
       }
-      
+
       if (validRoles){
         (<HTMLInputElement> document.getElementById('update_party_role_err')).hidden = true;
       }
